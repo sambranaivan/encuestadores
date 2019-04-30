@@ -44,7 +44,7 @@
 
 
 
-                                           @if($item->status !== 'recibido')
+                                           @if($item->status !== 'recibido' && $item->status !== 'en supervision')
                                              <td>
                                                 <form method="POST" action="{{route('confirmarArea')}}">
                                                 @csrf
@@ -60,6 +60,9 @@
                                             <button type="submit" class="btn btn-danger btn-sm">Rechazar</button>
                                             </form>
                                             </td>
+                                            @elseif($item->status == "en supervision")
+                                            <td></td>
+                                            <td></td>
                                             @else
                                              <td>
                                                     <form method="POST" action="{{route('asignarSupervisor')}}">

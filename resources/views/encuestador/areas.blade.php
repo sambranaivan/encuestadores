@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     .<div class="row">
@@ -25,7 +25,7 @@
                                     <th>Semana</th>
                                     <th>Visita n°</th>
                                     <th>Estado</th>
-                                    <th>Encuestas Cargadas</th>
+                                    <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
                                     <th></th>
                                     {{-- <th></th> --}}
                                     <th></th>
@@ -39,7 +39,8 @@
                                     <td>{{$item->semana}}</td>
                                     <td>{{$item->visita}}</td>
                                     <td>{{$item->status}}</td>
-                                    <th>{{$item->encuestas->count()}}</th>
+                                    <th>{{$item->encuestas->count()}}
+                                    ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th>
 
                                         @if($item->status == 'cargando' || $item->status == "rechazado")
                                             <td>

@@ -25,7 +25,7 @@
                                     <th>Semana</th>
                                     <th>Visita n°</th>
                                     <th>Estado</th>
-                                    <th>Encuestas Cargadas</th>
+                                  <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
 
                                 </tr>
                         @foreach ($areas as $item)
@@ -37,7 +37,8 @@
                                     <td>{{$item->semana}}</td>
                                     <td>{{$item->visita}}</td>
                                     <td>{{$item->status}}</td>
-                                    <th>{{$item->encuestas->count()}}</th>
+                                    <th>{{$item->encuestas->count()}}
+                                    ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th>
                                 </tr>
                         @endforeach
                     </table>

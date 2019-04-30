@@ -100,7 +100,14 @@ $(document).ready(function(){
                           <label for="">Vivienda</label>
                           <input type="number" value="1" required
                             class="form-control" name="vivienda" id="" aria-describedby="helpId" placeholder="">
+                             </div>
                         </div>
+                         <div class="col-md-4">
+                            <div class="form-group">
+                          <label for="">Hogar</label>
+                          <input type="number" value="1" required
+                            class="form-control" name="hogar" id="" aria-describedby="helpId" placeholder="">
+                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">

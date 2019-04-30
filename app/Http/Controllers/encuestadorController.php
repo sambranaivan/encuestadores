@@ -55,6 +55,7 @@ class encuestadorController extends Controller
 
         $e->listado = $request->listado;
         $e->vivienda = $request->vivienda;
+        $e->hogar = $request->hogar;
 
         $e->area_id = $request->area_id;
         $e->user_id = Auth::user()->id;

@@ -24,6 +24,7 @@
                                     <th>Trimestre</th>
                                     <th>Semana</th>
                                     <th>Visita n°</th>
+                                    <th>Encuestador</th>
                                     <th>Estado</th>
                                       <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
                                     <th></th>
@@ -38,6 +39,7 @@
                                     <td>{{$item->trimestre}}</td>
                                     <td>{{$item->semana}}</td>
                                     <td>{{$item->visita}}</td>
+                                    <td>{{$item->encuestador->name}}</td>
                                     <td>{{$item->status}}</td>
                                     <th>{{$item->encuestas->count()}}
                                         ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th>

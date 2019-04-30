@@ -39,8 +39,8 @@
                                     <td>{{$item->semana}}</td>
                                     <td>{{$item->visita}}</td>
                                     <td>{{$item->status}}</td>
-                                    <th>{{$item->encuestas->count()}}
-                                    ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th>
+                                    {{-- <th>{{$item->encuestas->count()}}
+                                    ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th> --}}
 
                                         @if($item->status == 'cargando' || $item->status == "rechazado")
                                             <td>

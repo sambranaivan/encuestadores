@@ -86,6 +86,7 @@ $(document).ready(function(){
                 <div class="card-body">
                 <form class="form" method="POST" action="{{route('saveEncuesta')}}">
                         @csrf
+                        <input type="hidden" name="area_id" value="{{$area->id}}">
                         <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -171,6 +172,15 @@ $(document).ready(function(){
                             </div>
                         </div>
                            {{-- end no-efectiva --}}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                  <label for="">Comentarios</label>
+                                  <input type="text"
+                                    class="form-control" name="comentarios" id="" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                         <div class="col-md-4">

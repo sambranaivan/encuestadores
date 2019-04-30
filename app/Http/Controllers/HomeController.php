@@ -27,6 +27,12 @@ class HomeController extends Controller
             case 0:
                 return redirect()->route('homeEncuestadores');
                 break;
+             case 2:
+                return redirect()->route('homeCoordinador');
+                break;
+             case 1:
+                return redirect()->route('homeSupervisor');
+                break;
 
             default:
                 # code...

@@ -34,16 +34,22 @@ Route::middleware('auth')->group(function () {
     // carga nueva encuesta en area
     // params:
     Route::post('/encuestador/encuesta/add','encuestadorController@nuevaEncuesta')->name('nuevaEncuesta');
+    Route::get('/encuesta/individuales/{id}','encuestadorController@nuevaIndividual')->name('nuevaIndividual');
+    Route::post('/individuals/save','encuestadorController@saveIndividuals')->name('saveIndividuals');
 
     /**
      * Coordinador
      */
-
-
+    Route::get('/coordinador/areas','CoordinadorController@listadoAreas')->name("homeCoordinador");
+    Route::post('/coordinador/rechazar',"CoordinadorController@rechazar")->name("rechazarArea");
+    Route::post('/coordinador/asignar',"CoordinadorController@asignar")->name("asignarSupervisor");
+    Route::post('/coordinador/confirmar',"CoordinadorController@confirmar")->name("confirmarArea");
+    Route::post('/save/supervisor',"CoordinadorController@saveAsignacion")->name("saveAsignacion");
 
     /**
      * Supervisor
      */
+    Route::get('/supervisor/areas','SupervisorController@listadoAreas')->name("homeSupervisor");
 
     /**
      * Administrador

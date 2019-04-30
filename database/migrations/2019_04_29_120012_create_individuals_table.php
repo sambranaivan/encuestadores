@@ -20,11 +20,14 @@ class CreateIndividualsTable extends Migration
             $table->unsignedBigInteger('encuesta_id');
             $table->foreign('encuesta_id')->references('id')->on('encuestas');
 
+                        $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->string('sexo');
             $table->integer('edad');
             //
-            $table->boolean('trabaja')->nullable();//trabaja - no trabaja - no busca
-            $table->boolean('busca')->nullable();//trabaja - no trabaja - no busca
+            $table->string('laboral')->nullable();//trabaja - no trabaja - no busca
+            // $table->boolean('busca')->nullable();//trabaja - no trabaja - no busca
             //
             $table->integer('ingreso_laboral')->nullable();
             $table->integer('ingreso_no_laboral')->nullable();

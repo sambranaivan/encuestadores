@@ -9,7 +9,7 @@
                     .<div class="row">
                         <div class="col-md-10">Listado de Areas</div>
                         <div class="col-md-2">
-                        <a name="" id="" class="btn btn-success" href="{{route('nuevaArea')}}" role="button">Nueva Area</a>
+                        {{-- <a name="" id="" class="btn btn-success" href="{{route('nuevaArea')}}" role="button">Nueva Area</a> --}}
                         </div>
                     </div>
                 </div>
@@ -26,9 +26,7 @@
                                     <th>Visita n°</th>
                                     <th>Estado</th>
                                     <th>Encuestas Cargadas</th>
-                                    <th></th>
-                                    {{-- <th></th> --}}
-                                    <th></th>
+
                                 </tr>
                         @foreach ($areas as $item)
                                 <tr>
@@ -40,36 +38,11 @@
                                     <td>{{$item->visita}}</td>
                                     <td>{{$item->status}}</td>
                                     <th>{{$item->encuestas->count()}}</th>
-
-                                        @if($item->status == 'cargando' || $item->status == "rechazado")
-                                            <td>
-                                                <form method="POST" action="{{route('nuevaEncuesta')}}">
-                                                @csrf
-                                            <input type="hidden" name="area_id" value="{{$item->id}}">
-                                            <button type="submit" class="btn btn-primary btn-sm">Cargar Encuesta</button>
-                                            </form>
-                                            </td>
-                                            {{-- <td>
-                                            <a name="" id="" class="btn btn-primary btn-sm btn-block" href="#" role="button">Editar Area</a>
-                                            </td> --}}
-                                            <td>
-                                            <form method="POST" action="{{route('entregarArea')}}">
-                                                @csrf
-                                            <input type="hidden" name="area_id" value="{{$item->id}}">
-                                            <button type="submit" class="btn btn-success btn-sm">Entregar Área</button>
-                                            </form>
-                                            </td>
-                                            @else
-                                            <td></td>
-                                            <td></td>
-
-                                        @endif
-
                                 </tr>
                         @endforeach
                     </table>
                     @else
-                         No Hay Areas Cargadas
+                         No hay áreas en espera.
                     @endif
 
                 </div>

@@ -17,6 +17,8 @@ class CreateAreasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');///Asignado a
+             $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->foreign('supervisor_id')->references('id')->on('users');///Asignado a
             $table->integer('area');
             $table->integer('semana');
             $table->integer('trimestre');

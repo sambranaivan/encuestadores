@@ -17,12 +17,15 @@ class CreateEncuestasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             //
             $table->integer('listado');
+            $table->integer('cantidad')->nullable();
             $table->integer('vivienda')->default(0);
             //
             $table->boolean('efectivo');//efectiva - no efectiva
-            $table->boolean('montos_completos');// estan los montos completos? si no estan completos no se cargan
+            // $table->boolean('montos_completos');// estan los montos completos? si no estan completos no se cargan
             //
             $table->string('tipo_no_efectiva')->nullable();///si es no efectiva decir el tipo
             $table->string('detalle_no_efectiva')->nullable();//el detalle de la no efectiva

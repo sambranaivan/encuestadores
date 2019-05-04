@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     /**
      * Administrador
      */
+    Route::get('/superadmin/home','superAdminController@home')->name('homeSuperAdmin');
 
     /**
      * Super Admin

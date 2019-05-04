@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         switch (Auth::user()->role) {
             case 0:
                 return redirect()->route('homeEncuestadores');
@@ -32,6 +33,10 @@ class HomeController extends Controller
                 break;
              case 1:
                 return redirect()->route('homeSupervisor');
+                break;
+                case 3:
+
+                return redirect()->route('homeSuperAdmin');
                 break;
 
             default:

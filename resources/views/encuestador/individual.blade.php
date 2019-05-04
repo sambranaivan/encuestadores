@@ -47,10 +47,10 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="ingreso_laboral_{{$i}}" >
+                                        <input type="number" class="form-control" name="ingreso_laboral_{{$i}}" step="1" >
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="ingreso_no_laboral_{{$i}}" >
+                                        <input type="number" class="form-control" name="ingreso_no_laboral_{{$i}}"  step="1">
                                     </td>
 
                                 </tr>

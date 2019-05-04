@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/encuestador/encuesta/add','encuestadorController@nuevaEncuesta')->name('nuevaEncuesta');
     Route::get('/encuesta/individuales/{id}','encuestadorController@nuevaIndividual')->name('nuevaIndividual');
     Route::post('/individuals/save','encuestadorController@saveIndividuals')->name('saveIndividuals');
+    Route::post('/encuesta/editar','encuestadorController@editEncuesta')->name('editarEncuesta');
+    Route::post('/area/detalle','encuestadorController@detalleArea')->name('detalleArea');
+    Route::post('/encuesta/detalle','encuestadorController@detalleEncuesta')->name("detalleEncuesta");
 
     /**
      * Coordinador
@@ -45,6 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/coordinador/asignar',"CoordinadorController@asignar")->name("asignarSupervisor");
     Route::post('/coordinador/confirmar',"CoordinadorController@confirmar")->name("confirmarArea");
     Route::post('/save/supervisor',"CoordinadorController@saveAsignacion")->name("saveAsignacion");
+
+
 
     /**
      * Supervisor
@@ -62,3 +67,4 @@ Route::middleware('auth')->group(function () {
 
 
 });
+

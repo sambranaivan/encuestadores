@@ -29,6 +29,8 @@ class area extends Model
         return $c;
     }
 
+
+
     public function encuestador()
     {
         return $this->belongsTo('App\User','user_id','id');

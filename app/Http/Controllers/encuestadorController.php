@@ -125,4 +125,23 @@ class encuestadorController extends Controller
 
     }
 
+    public function editarEncuesta(request $request)
+    {
+        $e = encuesta::find($request->encuesta_id);
+
+        return view('encuestador.editar');
+    }
+
+    public function detalleArea(request $request)
+    {
+        $a = area::find($request->area_id);
+        return view('encuestador.detalleArea',array('area'=>$a));
+    }
+
+    public function detalleEncuesta(request $request)
+    {
+        $e = encuesta::find($request->encuesta_id);
+        return view('encuestador.detalleEncuesta',array('encuesta'=>$e));
+    }
+
 }

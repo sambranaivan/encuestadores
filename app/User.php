@@ -41,4 +41,11 @@ class User extends Authenticatable
     public function areas(){
         return $this->hasMany('App\area');
     }
+
+
+    public function isEncuestador(){
+        return ($this->role == 0);
+
+
+    }
 }

@@ -69,7 +69,7 @@
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
                                     <th>Ponderador</th>
-                                    <th>Ingreso Necesario </br> $7405 CBT NEA</th>
+                                    <th>Ingreso Necesario </br> $7223 CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
                                 </tr>

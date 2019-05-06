@@ -55,7 +55,7 @@ class encuesta extends Model
     }
 
     public function getMinimo(){
-        return $this->getPonds() * 7405;
+        return $this->getPonds() * 7223;
     }
 
     public function getIndigente(){

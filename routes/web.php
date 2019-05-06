@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
      * Supervisor
      */
     Route::get('/supervisor/areas','SupervisorController@listadoAreas')->name("homeSupervisor");
+        Route::get('/supervisor/area/{id}','SupervisorController@verArea')->name("supervisarArea");
+        Route::get('/supervisor/area/finalizar/{id}','SupervisorController@finalizarArea')->name("finalizarArea");
 
 
     /**

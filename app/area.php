@@ -51,6 +51,11 @@ class area extends Model
 
         return $c;
     }
+
+    public function supervisor(){
+        return $this->hasOne('App\user','id','supervisor_id');
+    }
+
      public function getOtros()
     {
         $c = 0;

@@ -15,6 +15,7 @@ class CoordinadorController extends Controller
     public function listadoAreas(){
         $areas = area::where('status','entregado')
         ->orWhere('status','recibido')
+        ->orWhere('status','finalizado')
         ->orWhere('status','en supervision')->get()->sortByDesc('id');//solo las enviadas
 
         return view('coordinador.areas')->with('areas',$areas);

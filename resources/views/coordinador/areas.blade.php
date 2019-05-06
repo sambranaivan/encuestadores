@@ -40,28 +40,37 @@
                                     <td>{{$item->semana}}</td>
                                     <td>{{$item->visita}}</td>
                                     <td>{{$item->encuestador->name}}</td>
-                                    <td>{{$item->status}}</td>
+                                <td>{{$item->status}}
+
+                                </td>
                                     <th>{{$item->encuestas->count()}}
                                         ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th>
 
 
 
-                                           @if($item->status !== 'recibido' && $item->status !== 'en supervision')
+                                           @if($item->status == "entregado")
                                              <td>
                                              <a name="" id="" class="btn btn-primary btn-sm" href="{{route('coordinadorDetalleArea',['id'=>$item->id])}}" role="button">Controlar Area</a>
                                             </td>
 
                                              <td>
-                                                <form method="POST" action="{{route('rechazarArea')}}">
-                                                @csrf
-                                            <input type="hidden" name="area_id" value="{{$item->id}}">
-                                            <button type="submit" class="btn btn-danger btn-sm">Rechazar</button>
-                                            </form>
+                                                        <form method="POST" action="{{route('rechazarArea')}}">
+                                                        @csrf
+                                                    <input type="hidden" name="area_id" value="{{$item->id}}">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Rechazar</button>
+                                                    </form>
                                             </td>
                                             @elseif($item->status == "en supervision")
-                                            <td></td>
-                                            <td></td>
-                                            @else
+                                            <td>
+                                                   asignado a
+                                            </td>
+                                            <td> {{$item->supervisor->name}}</td>
+                                             @elseif($item->status == "finalizado")
+                                            <td>
+                                               asignado a
+                                            </td>
+                                            <td>{{$item->supervisor->name}}</td>
+                                             @elseif($item->status == "recibido")
                                              <td>
                                                     <form method="POST" action="{{route('asignarSupervisor')}}">
                                                         @csrf

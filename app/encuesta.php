@@ -80,4 +80,8 @@ class encuesta extends Model
             return true;
         }
     }
+
+    public function encuestador(){
+        return $this->belongsTo('App\user');
+    }
 }

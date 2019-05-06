@@ -15,6 +15,14 @@
 
                     <h4>Detalle Hogar</h4>
                     <ul class="list-group">
+                        {{-- area --}}
+                          <li class="list-group-item">
+                              <strong>Area:</strong>{{$encuesta->area->area}}
+                                <strong>Año:</strong>{{$encuesta->area->anio}}
+                                  <strong>Trimestre:</strong>{{$encuesta->area->trimestre}}
+                                    <strong>Semana:</strong>{{$encuesta->area->semana}}
+                                      <strong>Encuestador:</strong>{{$encuesta->area->encuestador->name}}
+                            </li>
                         <li class="list-group-item"><strong>Listado: </strong>{{$encuesta->listado}}</li>
                         <li class="list-group-item"><strong>Vivienda/Hogar:</strong> {{$encuesta->vivienda}}/{{$encuesta->hogar}}</li>
 

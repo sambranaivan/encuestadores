@@ -9,4 +9,6 @@ use Auth;
 class EncuestaController extends Controller
 {
 
+
+
 }

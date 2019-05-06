@@ -20,7 +20,7 @@ class encuestadorController extends Controller
     }
     public function nuevaEncuesta(request $request){
         $area = area::find($request->area_id);
-        return view('encuestador.nuevaEncuesta')->with('area',$area);
+        return view('encuestador.nuevaEncuesta')->with('area',$area)->with('editar',false);
     }
 
     public function saveArea(request $request)
@@ -65,6 +65,12 @@ class encuestadorController extends Controller
             $e->efectivo = true;
             $e->cantidad = $request->cantidad;
         }
+        else if($request->efectiva == 'otro')
+        {
+            $e->efectivo = 2;//otro caso
+            $e->otros_motivos = $request->otro_detalle;
+
+        }
         else {
             $e->efectivo = false;
             $e->tipo_no_efectiva = $request->tipo_no_efectiva;
@@ -85,7 +91,7 @@ class encuestadorController extends Controller
 
         $e->save();
 
-        if($e->efectivo)
+        if($e->efectivo == 1)
         {
             return redirect("/encuesta/individuales/".$e->id);
         }
@@ -137,10 +143,109 @@ class encuestadorController extends Controller
         $a = area::find($request->area_id);
         return view('encuestador.detalleArea',array('area'=>$a));
     }
+     public function detalleAreaGet($id)
+    {
+        $a = area::find($id);
+        return view('encuestador.detalleArea',array('area'=>$a));
+    }
 
     public function detalleEncuesta(request $request)
     {
         $e = encuesta::find($request->encuesta_id);
+        return view('encuestador.detalleEncuesta',array('encuesta'=>$e));
+    }
+
+
+    public function delete(request $request)
+    {
+        $e = encuesta::find($request->encuesta_id);
+          $a = $e->area;
+          $e->delete();
+          return redirect('/area/detalle/'.$a->id);
+        // return redirect();
+    }
+
+    public function edit(request $request)
+    {
+        $e = encuesta::find($request->encuesta_id);
+
+       return view('encuestador.nuevaEncuesta')->with('area',$e->area)->with('editar',true)->with('encuesta',$e);
+
+    }
+
+    public function editSave(request $request){
+        // $e = new encuesta();//
+        $e = encuesta::find($request->encuesta_id);
+
+        $e->listado = $request->listado;
+        $e->vivienda = $request->vivienda;
+        $e->hogar = $request->hogar;
+
+        $e->area_id = $request->area_id;
+        $e->user_id = Auth::user()->id;
+        $e->estado = "en espera";
+        if($request->efectiva == "efectivo")
+        {
+            $e->efectivo = true;
+            $e->cantidad = $request->cantidad;
+        }
+        else if($request->efectiva == 'otro')
+        {
+            $e->efectivo = 2;//otro caso
+            $e->otros_motivos = $request->otro_detalle;
+
+        }
+        else {
+            $e->efectivo = false;
+            $e->tipo_no_efectiva = $request->tipo_no_efectiva;
+            switch($request->tipo_no_efectiva)
+            {
+                case "ausente":
+                    $e->detalle_no_efectiva = $request->no_efectiva_ausente;
+                break;
+                case "rechazo":
+                    $e->detalle_no_efectiva = $request->no_efectiva_rechazo;
+                break;
+                case "otros":
+                $e->detalle_no_efectiva = $request->no_efectiva_otros;
+                break;
+            }
+        }
+        $e->comentarios = $request->comentarios;
+
+        $e->save();
+
+
+            // return redirect()->route('homeEncuestadores');
+              return redirect('/area/detalle/'.$e->area->id);
+
+
+
+    }
+
+    public function editIndividual($id){
+        $i = individual::find($id);
+
+        return view('encuestador.editIndividual')->with('individual',$i);
+    }
+
+    public function updateIndividual(request $request)
+    {
+        $individual = individual::find($request->id);
+        //  $individual = new individual();
+            $individual->user_id = Auth::user()->id;
+            $individual->sexo = $request['sexo'];
+            $individual->edad = $request['edad'];
+            $individual->laboral = $request['laboral'];
+            $individual->ingreso_laboral = $request['ingreso_laboral'];
+            $individual->ingreso_no_laboral = $request['ingreso_no_laboral'];
+            $individual->save();
+                return redirect('/encuesta/detalle/'.$individual->encuesta->id);
+    }
+
+    public function detalleEncuestaGet($id)
+    {
+        $e = encuesta::find($id);
         return view('encuestador.detalleEncuesta',array('encuesta'=>$e));
     }
 

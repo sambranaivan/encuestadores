@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\area;
 use App\pase;
 use App\user;
+use App\encuesta;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class CoordinadorController extends Controller
     public function listadoAreas(){
         $areas = area::where('status','entregado')
         ->orWhere('status','recibido')
-        ->orWhere('status','en supervision')->get();//solo las enviadas
+        ->orWhere('status','en supervision')->get()->sortByDesc('id');//solo las enviadas
 
         return view('coordinador.areas')->with('areas',$areas);
 
@@ -79,6 +80,17 @@ class CoordinadorController extends Controller
 
          return redirect()->route('homeCoordinador');
 
+    }
+
+    public function verArea($id){
+        $a = area::find($id);
+
+        return view('coordinador.detalleArea')->with('area',$a);
+    }
+    public function verEncuesta($id){
+        $e = encuesta::find($id);
+
+        return view('coordinador.detalleEncuesta')->with('encuesta',$e);
     }
 
 

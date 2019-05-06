@@ -9,7 +9,7 @@
                     .<div class="row">
                         <div class="col-md-10">Listado de Areas</div>
                         <div class="col-md-2">
-                        {{-- <a name="" id="" class="btn btn-success" href="{{route('nuevaArea')}}" role="button">Nueva Area</a> --}}
+
                         </div>
                     </div>
                 </div>
@@ -48,11 +48,7 @@
 
                                            @if($item->status !== 'recibido' && $item->status !== 'en supervision')
                                              <td>
-                                                <form method="POST" action="{{route('confirmarArea')}}">
-                                                @csrf
-                                            <input type="hidden" name="area_id" value="{{$item->id}}">
-                                            <button type="submit" class="btn btn-success btn-sm">Confirmar Recepción</button>
-                                            </form>
+                                             <a name="" id="" class="btn btn-primary btn-sm" href="{{route('coordinadorDetalleArea',['id'=>$item->id])}}" role="button">Controlar Area</a>
                                             </td>
 
                                              <td>

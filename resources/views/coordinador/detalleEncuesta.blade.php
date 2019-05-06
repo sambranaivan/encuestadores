@@ -41,7 +41,7 @@
                                 <th>Condición Laboral</th>
                                 <th>Ingreso no Laboral</th>
                                 <th>Ingreso Laboral</th>
-                                <th></th>
+                                {{-- <th></th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -52,9 +52,9 @@
                                 <td>{{$item->laboral}} </td>
                                 <td>{{$item->ingreso_no_laboral}}</td>
                                 <td>{{$item->ingreso_laboral}}</td>
-                                <td>
+                                {{-- <td>
                                 <a class="btn btn-primary btn-sm" href="{{route('editarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
-                                </td>
+                                </td> --}}
                                </tr>
                                @endforeach
                            </tbody>
@@ -67,21 +67,7 @@
                       <div class="col-md-2">
                         <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
                     </div>
-                    <div class="col-md-2 offset-md-3">
-                    <form method="POST" action="{{route('modificarEncuesta')}}">
-                            @csrf
-                        <input type="hidden" value="{{$encuesta->id}}" name="encuesta_id">
-                        <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>
-                        </form>
-                    </div>
 
-                    <div class="col-md-2 offset-md-3">
-                    <form method="POST" action="{{route('eliminarEncuesta')}}">
-                            @csrf
-                        <input type="hidden" value="{{$encuesta->id}}" name="encuesta_id">
-                        <button type="submit" class="btn btn-sm btn-primary btn-danger">Eliminar</button>
-                        </form>
-                    </div>
                   </div>
                 </div>
             </div>

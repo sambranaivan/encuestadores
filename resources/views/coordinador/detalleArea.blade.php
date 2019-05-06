@@ -6,7 +6,18 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title"><h4>Detalle Área</h4></div>
+                    <div class="card-title">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4>Detalle Área</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <a name="" id="" class="btn btn-primary" href="{{route('homeCoordinador')}}" role="button">Volver</a>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
 
 
@@ -53,15 +64,11 @@
                                         <div class="btn-group">
 
                                             {{-- Ver Detalle --}}
-                                                <form method="POST" action="{{route('detalleEncuesta')}}">
-                                                    @csrf
-                                                    <input type="hidden" name="encuesta_id" value="{{$item->id}}">
-                                                    <button type="submit" class="btn btn-primary btn-sm">Ver  Detalle</button>
-                                                </form>
+                                                <a name="" id="" class="btn btn-primary btn-sm" href="{{route('coordinadorDetalleEncuesta',['id'=>$item->id])}}" role="button">Ver Detalle</a>
                                                 {{--  --}}
 
 
-                                                <form method="POST" action="{{route('modificarEncuesta')}}">
+                                                {{-- <form method="POST" action="{{route('modificarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>
@@ -70,7 +77,7 @@
                             @csrf
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-danger">Eliminar</button>
-                        </form>
+                        </form> --}}
                                             </div>
                                     </td>
                                 </tr>
@@ -79,6 +86,13 @@
                         </tbody>
                     </table>
 
+                </div>
+                <div class="card-body text-center">
+                  <form method="POST" action="{{route('confirmarArea')}}">
+                                                @csrf
+                                            <input type="hidden" name="area_id" value="{{$area->id}}">
+                                            <button type="submit" class="btn btn-success btn-lg">Confirmar Entrega</button>
+                                            </form>
                 </div>
             </div>
         </div>

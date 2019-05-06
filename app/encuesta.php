@@ -27,7 +27,42 @@ class encuesta extends Model
         }
     }
 
+    public function getMonts(){
+        if($this->efectivo != 1)
+        {
+            return 0;
+        }
+        $m = 0;
+        foreach ($this->componentes as $individual)
+        {
+            $m += $individual->getMonts();
+        }
+        return $m;
+    }
+
+    public function getPonds()
+    {
+        $p = 0;
+        foreach ($this->componentes as $individual)
+        {
+            $p += $individual->getPond();
+        }
+        return $p;
+    }
+
+    public function getMinimo(){
+        return $this->getPonds() * 7405;
+    }
+
+    public function getIndigente(){
+        return $this->getPonds() * 3500;
+    }
+
     public function componentes(){
         return $this->hasMany('App\individual');
+    }
+
+    public function area(){
+        return $this->belongsTo('App\area');
     }
 }

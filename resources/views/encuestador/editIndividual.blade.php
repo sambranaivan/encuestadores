@@ -1,21 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+
+<script>
+$(document).ready(function(){
+
+
+    $("#sexo").val('{{$individual->sexo}}')
+    $("#trabaja").val('{{$individual->laboral}}')
+
+})
+</script>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Carga de Individuales</div>
+                <div class="card-header">Editar Individual</div>
 
                 <div class="card-body">
-
-                <form class="form" method="POST" action="{{route('saveIndividuals')}}">
+                    <form method="POST" action="{{route('updateIndividual')}}" class="form">
                         @csrf
-                        <input type="hidden" name="encuesta_id" value={{$encuesta->id}}>
+                    <input type="hidden" value="{{$individual->id}}" name="id">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>°</th>
                                     <th>Edad</th>
                                     <th>Sexo</th>
                                     <th>Situación Laboral</th>
@@ -24,21 +32,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <= $encuesta->cantidad; $i++)
-                                    <tr>
-                                    <td scope="row">{{$i}}</td>
+                                <tr>
+
                                     <td>
-                                        <input type="number" name="edad_{{$i}}" min=0 step=1 max=99 class="form-control" required>
+                                        <input type="number" name="edad" value="{{$individual->edad}}" min=0 step=1 max=99 class="form-control" required>
                                     </td>
                                     <td>
-                                    <select name="sexo_{{$i}}" class="form-control" required>
+                                    <select name="sexo" id="sexo" value="{{$individual->sexo}}" class="form-control" required>
                                         <option value="">-</option>
                                         <option value="Hombre">H</option>
                                         <option value="Mujer">M</option>
                                     </select>
                                     </td>
                                     <td>
-                                        <select class="form-control" name="laboral_{{$i}}" required>
+                                        <select class="form-control" name="laboral" id="trabaja" value="{{$individual->laboral}}" required>
                                             <option value="">-</option>
                                             <option value="Trabaja">Trabaja</option>
                                             <option value="No Trabaja">No Trabaja</option>
@@ -47,17 +54,16 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="ingreso_laboral_{{$i}}" step="1" >
+                                        <input type="number" class="form-control" name="ingreso_laboral" value="{{$individual->ingreso_laboral}}" step="1" >
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="ingreso_no_laboral_{{$i}}"  step="1">
+                                        <input type="number" class="form-control" name="ingreso_no_laboral" value="{{$individual->ingreso_no_laboral}}"  step="1">
                                     </td>
 
                                 </tr>
-                                @endfor
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary text">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </form>
                 </div>
             </div>

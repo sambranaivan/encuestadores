@@ -34,7 +34,11 @@ class encuesta extends Model
         }
         $m = 0;
         foreach ($this->componentes as $individual)
-        {
+        {   $mont = $individual->getMonts();
+            if( $mont == -9)
+            {
+            return -9;
+            }
             $m += $individual->getMonts();
         }
         return $m;
@@ -64,5 +68,16 @@ class encuesta extends Model
 
     public function area(){
         return $this->belongsTo('App\area');
+    }
+
+    public function esPobre(){
+        if($this->getMinimo() < $this->getMonts())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

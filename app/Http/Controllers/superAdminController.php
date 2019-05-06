@@ -12,8 +12,15 @@ use Illuminate\Http\Request;
 class superAdminController extends Controller
 {
     //
+
+    public function verEncuesta($id)
+    {
+        $e = encuesta::find($id);
+        return view('superadmin.detalleEncuesta')->with('encuesta',$e);
+    }
     public function home(){
         $areas = area::all();
+        $e = encuesta::where('efectivo',1)->get();
         $count_areas = $areas->count();
         $counts = array('cargando' => 0,'en supervision'=>0,'entregado' => 0,'recibido' => 0,'en direccion' => 0,'con autorizacion' => 0);
         foreach ($areas as $area)
@@ -21,10 +28,38 @@ class superAdminController extends Controller
             $counts[$area->status]++;
         }
 
+        $detalles = array(
+            'totales'=>0,
+            'pobres'=>0,
+            'no-pobres'=>0,
+            'incompletos'=>0,
+        );
+        foreach ($e as $encuesta)
+        {
+            $detalles['totales']++;
+            if($encuesta->getMonts() == -9)
+            {
+                $detalles['incompletos']++;
+            }
+            else
+            {
+                if($encuesta->esPobre())
+                {
+                    $detalles['pobres']++;
+                }
+                else
+                {
+                    $detalles['no-pobres']++;
+                }
+            }
+        }
+
 
         return view('superadmin.home',array(
                 'areas'=>$areas,
-                'counts'=>$counts
+                'counts'=>$counts,
+                'efectivos'=>$e,
+                'detalles'=>$detalles
         ));
 
 

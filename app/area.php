@@ -43,7 +43,22 @@ class area extends Model
         $e = $this->encuestas;
         foreach ($e as $key => $value) {
 
-            if(!$value->efectivo)
+            if(!$value->efectivo == 0)
+            {
+                $c++;
+            }
+        }
+
+        return $c;
+    }
+     public function getOtros()
+    {
+        $c = 0;
+
+        $e = $this->encuestas;
+        foreach ($e as $key => $value) {
+
+            if(!$value->efectivo == 2)
             {
                 $c++;
             }

@@ -15,8 +15,12 @@ class individual extends Model
     //
     public function getMonts()
     {
+
         $laboral = $this->ingreso_laboral?$this->ingreso_laboral:0;
         $no_laboral = $this->ingreso_no_laboral?$this->ingreso_no_laboral:0;
+        if($laboral == -9 || $no_laboral == -9){
+            return -9;
+        }
         return $laboral + $no_laboral;
     }
 

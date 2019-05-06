@@ -64,10 +64,12 @@ Route::middleware('auth')->group(function () {
      */
     Route::get('/supervisor/areas','SupervisorController@listadoAreas')->name("homeSupervisor");
 
+
     /**
      * Administrador
      */
     Route::get('/superadmin/home','superAdminController@home')->name('homeSuperAdmin');
+    Route::get('/admin/encuesta/{id}',"superAdminController@verEncuesta")->name("superVerEncuesta");
 
     /**
      * Super Admin

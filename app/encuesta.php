@@ -109,13 +109,13 @@ class encuesta extends Model
        if($this->estado())
        {
             if($this->getMinimo() < $this->getMonts())
-        {
-            return "es Pobre";
-        }
-        else
-        {
-            return "No es Pobre";
-        }
+                {
+                    return "es Pobre";
+                }
+                else
+                {
+                    return "No es Pobre";
+                }
        }
        else
        {

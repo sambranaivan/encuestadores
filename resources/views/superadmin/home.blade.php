@@ -67,6 +67,8 @@
                                 <tr  class="bg-dark text-light">
                                     <th>AREA</th>
                                     {{-- <th>estado</th> --}}
+                                     <th>listado</th>
+                                      <th>hogar</th>
                                     <th>Situacion</th>
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
@@ -78,9 +80,34 @@
                             </thead>
                             <tbody>
                                 @foreach ($efectivos as $item)
-                                <tr>
+                                <tr
+                                @if($item->getMonts() == -9)
+                                class="table-primary"    
+                                        
+                                        @else
+                                        @if($item->esPobre() == "es Pobre")
+                                    
+                                class="table-warning"    
+                                    
+                                        @elseif($item->esPobre() == "No es Pobre")
+                                    class="table-success"    
+                                       
+                                        @else
+                                                {{-- inclomepte --}}
+                                                class="table-danger"
+                                        @endif
+                                    
+                                        @endif
+                                
+                                >
                                     <td>
                                         {{$item->area->area}}
+                                    </td>
+                                    <td>
+                                        {{$item->listado}}
+                                    </td>
+                                    <td>
+                                        {{$item->hogar}}
                                     </td>
                                 <td>{{$item->status()}}</td>
                                 <td>{{$item->getMonts()}}</td>
@@ -95,25 +122,7 @@
                                     </td>
 
                                     <td>
-                                        @if($item->getMonts() == -9)
-
-                                            Falta Levantar montos
-                                        @else
-                                        @if($item->esPobre() == "es Pobre")
-                                    {{-- <td class="text-danger "> --}}
-
-                                        Es Pobre ($
-                                            {{$item->getMonts() - $item->getMinimo()}})
-                                    {{-- </td> --}}
-                                        @elseif($item->esPobre() == "No es Pobre")
-                                    {{-- <td class="text-success"> --}}
-                                        No es Pobre
-                                        ($ +{{$item->getMonts() - $item->getMinimo()}})
-                                        @else
-                                            INCOMPLETO
-                                        @endif
-                                    {{-- </td> --}}
-                                        @endif
+                                        {{$item->esPobre()}}
                                     </td>
                                 <td>
                                 <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>

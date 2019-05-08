@@ -19,7 +19,7 @@ class superAdminController extends Controller
         return view('superadmin.detalleEncuesta')->with('encuesta',$e);
     }
     public function home(){
-        $areas = area::all();
+        $areas = area::all()->sortByDesc('area');
         $e = encuesta::where('efectivo',1)->get();
         $count_areas = $areas->count();
         $counts = array('cargando' => 0,'rechazado' => 0,'finalizado' => 0,'en supervision'=>0,'entregado' => 0,'recibido' => 0,'en direccion' => 0,'con autorizacion' => 0);

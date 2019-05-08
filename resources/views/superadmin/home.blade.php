@@ -86,9 +86,9 @@
 
                                 @if($item->estado())
                                             @if($item->esPobre())
-                                         class="table-danger"
-                                         @else
-                                         class="table-success"
+                                            class="table-success"
+                                            @else
+                                            class="table-danger"
                                          @endif
                                          @else
                                           class="table-warning"

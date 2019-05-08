@@ -27,6 +27,41 @@ class encuesta extends Model
         }
     }
 
+    public function estado(){
+        if($this->efectivo == 1)
+        {
+            foreach ($this->componentes as $individual)
+                {   
+                    if($individual->estado() == false)
+                    {
+                        return false;
+                    }
+                }
+
+        return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
+    public function status(){
+        if($this->area->status == 'en supervision')
+        {
+            return $this->area->status."(".$this->area->supervisor->name.")";
+        }
+        else if($this->area->status == 'cargando')
+        {
+            return $this->area->status."(".$this->area->encuestador->name.")";
+        }
+        else
+        {
+            return $this->area->status;
+        }
+    }
+
     public function getMonts(){
         if($this->efectivo != 1)
         {
@@ -71,17 +106,25 @@ class encuesta extends Model
     }
 
     public function esPobre(){
-        if($this->getMinimo() < $this->getMonts())
+       if($this->estado())
+       {
+            if($this->getMinimo() < $this->getMonts())
         {
-            return false;
+            return "es Pobre";
         }
         else
         {
-            return true;
+            return "No es Pobre";
         }
+       }
+       else
+       {
+           return "No declara ingresos";
+       }
     }
 
     public function encuestador(){
         return $this->belongsTo('App\user');
     }
+      
 }

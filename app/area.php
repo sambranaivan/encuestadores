@@ -13,14 +13,44 @@ class area extends Model
         return $this->hasMany('App\encuesta');
     }
 
-    public function getEfectiva()
+    public function getCompletas()
     {
         $c = 0;
 
         $e = $this->encuestas;
         foreach ($e as $key => $value) {
 
-            if($value->efectivo)
+            if($value->estado())
+            {
+                $c++;
+            }
+        }
+
+        return $c;
+    }
+     public function getIncompletas()
+    {
+        $c = 0;
+
+        $e = $this->encuestas;
+        foreach ($e as $key => $value) {
+
+            if(!$value->estado())
+            {
+                $c++;
+            }
+        }
+
+        return $c;
+    }
+     public function getEfectiva()
+    {
+        $c = 0;
+
+        $e = $this->encuestas;
+        foreach ($e as $key => $value) {
+
+             if(!$value->efectivo == 0)
             {
                 $c++;
             }
@@ -29,7 +59,20 @@ class area extends Model
         return $c;
     }
 
+    public function estado()
+    {
+            
+            foreach ($this->encuestas as $encuesta)
+            {   
+            if(!$encuesta->estado())
+            {
+            return false;
+            }
+            }
 
+            return true;
+            
+    }
 
     public function encuestador()
     {

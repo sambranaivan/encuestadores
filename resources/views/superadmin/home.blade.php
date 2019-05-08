@@ -65,7 +65,9 @@
                         <table class="table table-sm table-tripped text-center">
                             <thead>
                                 <tr  class="bg-dark text-light">
-                                    <th>#</th>
+                                    <th>AREA</th>
+                                    {{-- <th>estado</th> --}}
+                                    <th>Situacion</th>
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
                                     <th>Ponderador</th>
@@ -76,19 +78,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($efectivos as $item)
-                                <tr
-                                @if($item->getMonts() == -9)
-                                class="table-warning"
-                                @endif
-                                    @if($item->esPobre())
-                                    class="table-danger"
-                                    @else
-                                    class="table-success"
-                                    @endif
-                                >
+                                <tr>
                                     <td>
-                                        {{$item->id}}
+                                        {{$item->area->area}}
                                     </td>
+                                <td>{{$item->status()}}</td>
                                 <td>{{$item->getMonts()}}</td>
                                 <td>
                                     {{$item->componentes->count()}}
@@ -105,16 +99,18 @@
 
                                             Falta Levantar montos
                                         @else
-                                        @if($item->esPobre())
+                                        @if($item->esPobre() == "es Pobre")
                                     {{-- <td class="text-danger "> --}}
 
                                         Es Pobre ($
                                             {{$item->getMonts() - $item->getMinimo()}})
                                     {{-- </td> --}}
-                                        @else
+                                        @elseif($item->esPobre() == "No es Pobre")
                                     {{-- <td class="text-success"> --}}
                                         No es Pobre
                                         ($ +{{$item->getMonts() - $item->getMinimo()}})
+                                        @else
+                                            INCOMPLETO
                                         @endif
                                     {{-- </td> --}}
                                         @endif

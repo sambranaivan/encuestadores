@@ -41,7 +41,7 @@ class superAdminController extends Controller
             if($encuesta->estado())
             {
                 $detalles['completos']++;
-                if($encuesta->esPobre())
+                if(!$encuesta->esPobre())
                 {
                     $detalles['pobres']++;
                     

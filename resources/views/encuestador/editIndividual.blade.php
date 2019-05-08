@@ -27,8 +27,8 @@ $(document).ready(function(){
                                     <th>Edad</th>
                                     <th>Sexo</th>
                                     <th>Situación Laboral</th>
-                                    <th>Ingreso no laboral</th>
                                     <th>Ingreso Laboral</th>
+                                    <th>Ingreso no laboral</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -81,24 +81,11 @@
                             <tbody>
                                 @foreach ($efectivos as $item)
                                 <tr
-                                @if($item->getMonts() == -9)
-                                class="table-primary"    
-                                        
-                                        @else
-                                        @if($item->esPobre() == "es Pobre")
-                                    
-                                class="table-warning"    
-                                    
-                                        @elseif($item->esPobre() == "No es Pobre")
-                                    class="table-success"    
-                                       
-                                        @else
-                                                {{-- inclomepte --}}
-                                                class="table-danger"
+                                @if($item->estado())
+                                            class="table-success"
+                                         @else
+                                class="table-warning"
                                         @endif
-                                    
-                                        @endif
-                                
                                 >
                                     <td>
                                         {{$item->area->area}}
@@ -122,7 +109,7 @@
                                     </td>
 
                                     <td>
-                                        {{$item->esPobre()}}
+                                        
                                     </td>
                                 <td>
                                 <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>

@@ -63,7 +63,7 @@ class encuesta extends Model
 
     public function diff()
     {
-        return ceil($this->getMinimo() - $this->getMonts());
+        return ceil($this->getMonts()- $this->getMinimo());
     }
 
     public function status(){

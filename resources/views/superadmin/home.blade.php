@@ -57,8 +57,8 @@
                                 </tr>
                                <tr>
                                     <th>Porcentajes</th>
-                                    <td>{{ceil($detalles['pobres']/$detalles['totales']*100)}}%</td>
-                                    <td>{{ceil($detalles['no-pobres']/$detalles['totales']*100)}}%</td>
+                                    <td>{{ceil($detalles['pobres']/$detalles['completos']*100)}}%</td>
+                                    <td>{{ceil($detalles['no-pobres']/$detalles['completos']*100)}}%</td>
                                     <td>{{ceil($detalles['incompletos']/$detalles['totales']*100)}}%</td>
                                 </tr>
                             </tbody>

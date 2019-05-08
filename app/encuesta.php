@@ -47,6 +47,25 @@ class encuesta extends Model
         
     }
 
+    public function esPobre(){
+        if($this->estado())
+        {
+            if($this->getMinimo() < $this->getMonts())
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function diff()
+    {
+        return ceil($this->getMinimo() - $this->getMonts());
+    }
+
     public function status(){
         if($this->area->status == 'en supervision')
         {
@@ -105,23 +124,7 @@ class encuesta extends Model
         return $this->belongsTo('App\area');
     }
 
-    public function esPobre(){
-       if($this->estado())
-       {
-            if($this->getMinimo() < $this->getMonts())
-                {
-                    return "es Pobre";
-                }
-                else
-                {
-                    return "No es Pobre";
-                }
-       }
-       else
-       {
-           return "No declara ingresos";
-       }
-    }
+   
 
     public function encuestador(){
         return $this->belongsTo('App\user');

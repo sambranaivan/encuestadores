@@ -187,7 +187,7 @@ class individual extends Model
 
 
     public function estado(){
-        if($this->laboral == 'Trabaja' && ($this->ingreso_laboral <0 || is_null($this->ingreso)))
+        if($this->laboral == 'Trabaja' && ($this->ingreso_laboral <0 || is_null($this->ingreso_laboral)))
         {
             return false;//aca falta el coso
         }

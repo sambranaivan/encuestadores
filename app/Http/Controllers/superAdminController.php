@@ -32,25 +32,30 @@ class superAdminController extends Controller
             'totales'=>0,
             'pobres'=>0,
             'no-pobres'=>0,
+            'completos'=>0,
             'incompletos'=>0,
         );
         foreach ($e as $encuesta)
         {
             $detalles['totales']++;
-            if($encuesta->getMonts() == -9)
+            if($encuesta->estado())
             {
-                $detalles['incompletos']++;
-            }
-            else
-            {
+                $detalles['completos']++;
                 if($encuesta->esPobre())
                 {
                     $detalles['pobres']++;
+                    
                 }
                 else
                 {
                     $detalles['no-pobres']++;
+                   
                 }
+            }
+            else
+            {
+                $detalles['incompletos']++;
+                
             }
         }
 

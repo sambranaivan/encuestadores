@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
 
 
@@ -55,14 +57,14 @@
                                 </tr>
                                <tr>
                                     <th>Porcentajes</th>
-                                    <td>{{$detalles['pobres']/$detalles['totales']*100}}%</td>
-                                    <td>{{$detalles['no-pobres']/$detalles['totales']*100}}%</td>
-                                    <td>{{$detalles['incompletos']/$detalles['totales']*100}}%</td>
+                                    <td>{{ceil($detalles['pobres']/$detalles['totales']*100)}}%</td>
+                                    <td>{{ceil($detalles['no-pobres']/$detalles['totales']*100)}}%</td>
+                                    <td>{{ceil($detalles['incompletos']/$detalles['totales']*100)}}%</td>
                                 </tr>
                             </tbody>
                         </table>
                     <h3>Detalle de Hogares</h3>
-                        <table class="table table-sm table-tripped text-center">
+                        <table class="table table-sm table-tripped text-center" id="table">
                             <thead>
                                 <tr  class="bg-dark text-light">
                                     <th>AREA</th>
@@ -81,11 +83,18 @@
                             <tbody>
                                 @foreach ($efectivos as $item)
                                 <tr
+
                                 @if($item->estado())
-                                            class="table-success"
+                                            @if($item->esPobre())
+                                         class="table-danger"
                                          @else
-                                class="table-warning"
-                                        @endif
+                                         class="table-success"
+                                         @endif
+                                         @else
+                                          class="table-warning"
+                                        
+                                         @endif
+
                                 >
                                     <td>
                                         {{$item->area->area}}
@@ -109,7 +118,11 @@
                                     </td>
 
                                     <td>
-                                        
+                                         @if($item->estado())
+                                           {{$item->diff()}}
+                                           @else
+                                           No declaro montos
+                                         @endif
                                     </td>
                                 <td>
                                 <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>

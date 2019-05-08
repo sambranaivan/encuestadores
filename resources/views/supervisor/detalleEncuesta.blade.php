@@ -36,8 +36,12 @@
 
                         @endif
                         <li class="list-group-item"><strong>Comentarios: </strong>{{$encuesta->comentarios}}</li>
+                        <li class="list-group-item"><strong>Comentarios Supervisor: </strong>{{$encuesta->comentarios_supervisor}}</li>
                     </ul>
                     {{-- detalle componentes --}}
+                    @if($encuesta->componentes->count() != $encuesta->cantidad)
+                        <a name="" id="" class="btn btn-warning" href="/supervisor/individual/{{$encuesta->id}}" role="button">Cargar Componentes</a>
+                    @endif
                     @if($encuesta->componentes->count())
                     <h4>Componentes del Hogar</h4>
                     <table class="table table-sm table-striped">
@@ -72,23 +76,23 @@
                 <div class="card-body">
                   <div class="row">
                       <div class="col-md-2">
-                        <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
+                      <a name="" id="" class="btn btn-primary btn-sm" href="{{route('homeSupervisor')}}" role="button">Volver</a>
                     </div>
                     <div class="col-md-2 offset-md-3">
-                    <form method="POST" action="{{route('modificarEncuesta')}}">
+                    <form method="POST" action="{{route('supervisorModificarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$encuesta->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>
                         </form>
                     </div>
 
-                    <div class="col-md-2 offset-md-3">
+                    {{-- <div class="col-md-2 offset-md-3">
                     <form method="POST" action="{{route('eliminarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$encuesta->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-danger">Eliminar</button>
                         </form>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
             </div>

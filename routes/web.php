@@ -63,8 +63,21 @@ Route::middleware('auth')->group(function () {
      * Supervisor
      */
     Route::get('/supervisor/areas','SupervisorController@listadoAreas')->name("homeSupervisor");
-        Route::get('/supervisor/area/{id}','SupervisorController@verArea')->name("supervisarArea");
-        Route::get('/supervisor/area/finalizar/{id}','SupervisorController@finalizarArea')->name("finalizarArea");
+    Route::get('/supervisor/area/{id}','SupervisorController@verArea')->name("supervisarArea");
+    Route::get('/supervisor/area/finalizar/{id}','SupervisorController@finalizarArea')->name("finalizarArea");
+
+
+    // 
+    // Route::post('/supervisor/encuesta/edit/','supervisorController@edit')->name('supervisorModificarEncuesta');
+    Route::post('/supervisor/encuesta/','supervisorController@ver')->name('supervisorVerDetalle');
+    Route::get('/supervisor/encuesta/{id}','supervisorController@verGet');
+    Route::post('/supervisor/encuesta/edit/','supervisorController@edit')->name('supervisorModificarEncuesta');
+    Route::post('/supervisor/encuesta/update/','supervisorController@update')->name('supervisorUpdateEncuesta');
+
+    Route::get('/supervisor/individual/{id}','supervisorController@showIndividual')->name('supervisorShowIndividual');
+
+    Route::post('/supervisor/individual/save/','supervisorController@saveIndividual')->name('supervisorSaveIndividual');
+
 
 
     /**

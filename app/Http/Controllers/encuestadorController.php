@@ -112,7 +112,7 @@ class encuestadorController extends Controller
     public function saveIndividuals(request $request){
 
         $e = encuesta::find($request->encuesta_id);
-        print_r($request->all);
+        // print_r($request->all);
         // return;
         for ($i=1; $i <= $e->cantidad ; $i++)
         {
@@ -128,7 +128,6 @@ class encuestadorController extends Controller
             $individual->save();
         }
         return redirect()->route('homeEncuestadores');
-
     }
 
     public function editarEncuesta(request $request)

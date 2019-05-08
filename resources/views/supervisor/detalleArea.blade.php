@@ -53,7 +53,7 @@
                                         <div class="btn-group">
 
                                             {{-- Ver Detalle --}}
-                                                <form method="POST" action="{{route('detalleEncuesta')}}">
+                                                <form method="POST" action="{{route('supervisorVerDetalle')}}">
                                                     @csrf
                                                     <input type="hidden" name="encuesta_id" value="{{$item->id}}">
                                                     <button type="submit" class="btn btn-primary btn-sm">Ver  Detalle</button>
@@ -61,7 +61,7 @@
                                                 {{--  --}}
 
 
-                                                <form method="POST" action="{{route('modificarEncuesta')}}">
+                                                <form method="POST" action="{{route('supervisorModificarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>

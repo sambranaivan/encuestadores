@@ -66,11 +66,14 @@
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>
                         </form>
-                                                <form method="POST" action="{{route('eliminarEncuesta')}}">
+                                                @if(Auth::user()->isEncuestador())
+                                                
+                                                    <form method="POST" action="{{route('eliminarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">
                         <button type="submit" class="btn btn-sm btn-primary btn-danger">Eliminar</button>
                         </form>
+                                                @endif
                                             </div>
                                     </td>
                                 </tr>

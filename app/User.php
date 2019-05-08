@@ -45,7 +45,5 @@ class User extends Authenticatable
 
     public function isEncuestador(){
         return ($this->role == 0);
-
-
     }
 }

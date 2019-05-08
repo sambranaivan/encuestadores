@@ -16,6 +16,9 @@
                 $("#no_efectiva_rechazo").removeAttr('required');;
                 $("#no_efectiva_otros").removeAttr('required');;
                 $("#submit").html("Guardar y cargar componentes")
+                // 
+
+                // 
                 $("#otro_detalle").removeAttr('required')
             }
             else if (t.value == "no")
@@ -106,24 +109,19 @@ $(document).ready(function(){
                     @if($editar)
 
                     var efectivo = {{$encuesta->efectivo}}
-                    $("#comentarios").val('{{$encuesta->comentarios}}')
+                    // $("#comentarios").val('{{$encuesta->comentarios}}')
                     switch (efectivo) {
                             case 0:
-                            $("#opciones").val('no');
-                            $("#motivo_rechazo").val('{{$encuesta->tipo_no_efectiva}}')
-                            $("#no_efectiva_ausente").val('{{$encuesta->detalle_no_efectiva}}')
-                            $("#no_efectiva_rechazo").val('{{$encuesta->detalle_no_efectiva}}')
-                            $("#no_efectiva_otros").val('{{$encuesta->detalle_no_efectiva}}')
-                            $("#motivo_rechazo").trigger('change');
-
-
+                                $("#opciones").val('no');
+                                $("#motivo_rechazo").val('{{$encuesta->tipo_no_efectiva}}')
+                                $("#no_efectiva_ausente").val('{{$encuesta->detalle_no_efectiva}}')
+                                $("#no_efectiva_rechazo").val('{{$encuesta->detalle_no_efectiva}}')
+                                $("#no_efectiva_otros").val('{{$encuesta->detalle_no_efectiva}}')
+                                $("#motivo_rechazo").trigger('change');
                             break;
                             case 1:
-
-                                    // $("#componentes").val('{{$encuesta->cantidad}}').prop('disabled',true)
+                                    $("#componentes").val('{{$encuesta->cantidad}}');
                                     $("#opciones").val('efectivo');
-
-
                             break;
                             case 2:
                                 $("#opciones").val('otro');
@@ -146,7 +144,7 @@ $(document).ready(function(){
                 <div class="card-body">
                 <form class="form" method="POST"
                     @if($editar)
-                    action="{{route('saveEditEncuesta')}}"
+                    action="{{route('supervisorUpdateEncuesta')}}"
                     {{-- TODO --}}
                     @else
                     action="{{route('saveEncuesta')}}"
@@ -296,7 +294,7 @@ $(document).ready(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                  <label for="">Comentarios</label>
+                                  <label for="">Comentarios del Supervisor</label>
                                   <input type="text"
                                     class="form-control" name="comentarios" id="comentarios" aria-describedby="helpId" placeholder="">
                                 </div>
@@ -320,7 +318,7 @@ $(document).ready(function(){
                         {{--  --}}
 
                     </form>
-
+                   
                 </div>
             </div>
         </div>

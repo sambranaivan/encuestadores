@@ -78,6 +78,7 @@
                                     <th>Ingreso Necesario </br> $7723 CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,7 +93,7 @@
                                          @endif
                                          @else
                                           class="table-warning"
-                                        
+
                                          @endif
 
                                 >
@@ -120,9 +121,15 @@
                                     <td>
                                          @if($item->estado())
                                            {{$item->diff()}}
+
                                            @else
                                            No declaro montos
                                          @endif
+                                    </td>
+                                    <td>
+                                        @if(!$item->esPobre() && $item->estado())
+                                            ( {{$item->pordiff()}} %)
+                                           @endif
                                     </td>
                                 <td>
                                 <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>

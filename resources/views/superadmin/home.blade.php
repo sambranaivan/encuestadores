@@ -74,7 +74,7 @@
                                     <th>Situacion</th>
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
-                                    <th>Ponderador</th>
+                                    <th>Adulto Equivalente</th>
                                     <th>Ingreso Necesario </br> $7723 CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>

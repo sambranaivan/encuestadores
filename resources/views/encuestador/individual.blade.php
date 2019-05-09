@@ -48,10 +48,14 @@
                                     </td>
                                     <td>
                                         <input type="number" class="form-control" name="ingreso_laboral_{{$i}}" step="1" >
+                                        <small class="text-muted">EN CASO DE NS/NC INGRESAR EL VALOR -9</small></br>
                                         <small class="text-muted">sin punto de mil</small>
+
                                     </td>
                                     <td>
                                         <input type="number" class="form-control" name="ingreso_no_laboral_{{$i}}"  step="1">
+
+                                        <small class="text-muted">EN CASO DE NS/NC INGRESAR EL VALOR -9</small></br>
                                         <small class="text-muted">sin punto de mil</small>
                                     </td>
 

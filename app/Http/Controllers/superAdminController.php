@@ -21,7 +21,7 @@ class superAdminController extends Controller
     }
     public function home(){
         $areas = area::all()->sortByDesc('area');
-        $e = encuesta::where('efectivo',1)->get();
+        $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
         $counts = array('cargando' => 0,'rechazado' => 0,'finalizado' => 0,'en supervision'=>0,'entregado' => 0,'recibido' => 0,'en direccion' => 0,'con autorizacion' => 0);
         foreach ($areas as $area)

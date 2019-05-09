@@ -118,7 +118,7 @@ class superAdminController extends Controller
             }
         }
         $e->comentario_admin = $request->comentarios;
-        $e->revisada = "ok";
+        $e->revisado = "ok";
         $e->save();
 
         echo $e->id;

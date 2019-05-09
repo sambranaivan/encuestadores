@@ -80,6 +80,7 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -145,6 +146,14 @@
                                 <td>
                                        <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$item->id])}}" role="button">Modificar</a>
 
+                                </td>
+
+                                <td>
+                                     @if($item->listo)
+                                    <a href="#" class="btn btn-sm  btn-primary active" role="button">Marcado como listo</a>
+                                    @else
+                                    <a name="" id="" class="btn btn-success btn-sm" href="{{route('listoHome',['id'=>$item->id])}}" role="button">Listo para Cargar</a>
+                                    @endif
                                 </td>
 
 

@@ -90,6 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/superadmin/encuesta/edit/{id}','superAdminController@edit')->name("AdminEditEncuesta");
     Route::post('/superadmin/encuesta/update/','superAdminController@update')->name("AdminUpdateEncuesta");
     Route::get('/superadmin/encuesta/listo/{id}','superAdminController@listo')->name("listo");
+    Route::get('/superadmin/encuesta/listoHome/{id}','superAdminController@listoHome')->name("listoHome");
 
     /**
      * Super Admin

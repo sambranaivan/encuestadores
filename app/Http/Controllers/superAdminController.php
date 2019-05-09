@@ -136,4 +136,12 @@ class superAdminController extends Controller
         return redirect('/admin/encuesta/'.$e->id);
 
     }
+      public function listoHome($id)
+    {
+        $e = encuesta::find($id);
+        $e->listo = "listo";
+        $e->save();
+        return redirect()->route('homeSuperAdmin');
+
+    }
 }

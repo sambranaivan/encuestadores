@@ -175,7 +175,11 @@ class superAdminController extends Controller
             $individual->ingreso_laboral = $request['ingreso_laboral'];
             $individual->ingreso_no_laboral = $request['ingreso_no_laboral'];
             $individual->comentario = $request['comentario'];
-            $individual->super = Auth::user()->name;
+            if( $request['super'] == 'on')
+            {
+
+                $individual->super = Auth::user()->name;
+            }
             $individual->save();
 
 

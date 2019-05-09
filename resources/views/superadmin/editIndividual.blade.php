@@ -29,6 +29,7 @@ $(document).ready(function(){
                                     <th>Situación Laboral</th>
                                     <th>Ingreso Laboral</th>
                                     <th>Ingreso no laboral</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,12 @@ $(document).ready(function(){
                                     </td>
                                     <td>
                                         <input type="number" class="form-control" name="ingreso_no_laboral" value="{{$individual->ingreso_no_laboral}}"  step="1">
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="super" >
+                                            <label class="form-check-label" for="exampleCheck1">Super Super</label>
+                                        </div>
                                     </td>
 
                                 </tr>

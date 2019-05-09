@@ -24,7 +24,7 @@
                             </li>
                         <li class="list-group-item"><strong>Listado: </strong>{{$encuesta->listado}}</li>
                         <li class="list-group-item"><strong>Vivienda/Hogar:</strong> {{$encuesta->vivienda}}/{{$encuesta->hogar}}</li>
-
+                            <li class="list-group-item"><strong>Visita: </strong>{{$encuesta->area->visita}}</li>
                         @if($encuesta->efectivo == 0)
                         <li class="list-group-item"><strong>Condición: </strong>{{$encuesta->condicion()}}/ {{$encuesta->tipo_no_efectiva}}/{{$encuesta->detalle_no_efectiva}}</li>
                         @endif
@@ -35,6 +35,8 @@
                          <li class="list-group-item"><strong>Condición: </strong>{{$encuesta->condicion()}}/ {{$encuesta->otros_motivos}}</li>
 
                         @endif
+
+                        <li class="list-group-item"><strong>Estado: </strong>{{$encuesta->area->status}}</li>
                         <li class="list-group-item"><strong>Comentarios Encuestador: </strong>{{$encuesta->comentarios}}</li>
                         <li class="list-group-item"><strong>Comentarios Supervisor: </strong>{{$encuesta->comentario_supervisor}}</li>
                         <li class="list-group-item"><strong>Comentarios Dirección: </strong>{{$encuesta->comentario_admin}}</li>
@@ -73,12 +75,20 @@
                         <div class="col-md-2">
                             <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
                         </div>
+                        @if($encuesta->area->status == 'finalizado')
                         <div class="col-md-2 offset-md-3">
 
-                        <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$encuesta->id])}}" role="button">Modificar</a>
+                            <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$encuesta->id])}}" role="button">Modificar</a>
+                        </div>
+                        <div class="col-md-2 offset-md-2">
 
-
-                  </div>
+                            @if($encuesta->listo)
+                            <a href="#" class="btn btn-sm  btn-primary active" role="button">Marcado como listo</a>
+                            @else
+                            <a name="" id="" class="btn btn-success btn-sm" href="{{route('listo',['id'=>$encuesta->id])}}" role="button">Listo para Cargar</a>
+                            @endif
+                        </div>
+                        @endif
                 </div>
             </div>
         </div>

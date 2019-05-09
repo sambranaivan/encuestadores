@@ -118,12 +118,22 @@ class superAdminController extends Controller
             }
         }
         $e->comentario_admin = $request->comentarios;
-
+        $e->revisada = "ok";
         $e->save();
 
         echo $e->id;
             // return redirect()->route('homeEncuestadores');
               return redirect('/admin/encuesta/'.$e->id);
+
+    }
+
+
+     public function listo($id)
+    {
+        $e = encuesta::find($id);
+        $e->listo = "listo";
+        $e->save();
+        return redirect('/admin/encuesta/'.$e->id);
 
     }
 }

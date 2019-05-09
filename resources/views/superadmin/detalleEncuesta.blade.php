@@ -52,7 +52,7 @@
                                 <th>Condición Laboral</th>
                                 <th>Ingreso no Laboral</th>
                                 <th>Ingreso Laboral</th>
-                                {{-- <th></th> --}}
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,6 +63,9 @@
                                     <td>{{$item->laboral}} </td>
                                     <td>{{$item->ingreso_no_laboral}}</td>
                                     <td>{{$item->ingreso_laboral}}</td>
+                                     <td>
+                                <a class="btn btn-primary btn-sm" href="{{route('AdminEditarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
+                                </td>
                                </tr>
                                @endforeach
                            </tbody>

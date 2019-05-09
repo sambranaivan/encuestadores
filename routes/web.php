@@ -92,6 +92,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/superadmin/encuesta/listo/{id}','superAdminController@listo')->name("listo");
     Route::get('/superadmin/encuesta/listoHome/{id}','superAdminController@listoHome')->name("listoHome");
 
+    Route::get('/superadmin/individual/editar/{id}','superAdminController@editIndividual')->name('AdminEditarIndividual');
+    Route::post('/superadmin/individual/update','superAdminController@updateIndividual')->name('AdminupdateIndividual');
     /**
      * Super Admin
      */

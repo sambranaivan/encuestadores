@@ -144,4 +144,27 @@ class superAdminController extends Controller
         return redirect()->route('homeSuperAdmin');
 
     }
+
+      public function editIndividual($id){
+        $i = individual::find($id);
+
+        return view('superadmin.editIndividual')->with('individual',$i);
+    }
+
+
+     public function updateIndividual(request $request)
+    {
+            $individual = individual::find($request->id);
+        //  $individual = new individual();
+            $individual->user_id = Auth::user()->id;
+            $individual->sexo = $request['sexo'];
+            $individual->edad = $request['edad'];
+            $individual->laboral = $request['laboral'];
+            $individual->ingreso_laboral = $request['ingreso_laboral'];
+            $individual->ingreso_no_laboral = $request['ingreso_no_laboral'];
+            $individual->comentario = $request['comentario'];
+            $individual->super = Auth::user()->name;
+            $individual->save();
+                return redirect('/admin/encuesta/'.$individual->encuesta->id);
+    }
 }

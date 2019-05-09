@@ -63,6 +63,11 @@ $(document).ready(function(){
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="form-group">
+                          <label for="">Comentarios Super Admin</label>
+                          <input type="text" name="cometarios" id="" class="form-control" placeholder="" aria-describedby="helpId">
+
+                        </div>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </form>
                 </div>

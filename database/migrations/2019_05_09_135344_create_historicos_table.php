@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndividualsTable extends Migration
+class CreateHistoricosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateIndividualsTable extends Migration
      */
     public function up()
     {
-        Schema::create('individuals', function (Blueprint $table) {
-                $table->bigIncrements('id');
-
-
-                $table->unsignedBigInteger('encuesta_id');
-                $table->foreign('encuesta_id')->references('id')->on('encuestas');
-
-                $table->unsignedBigInteger('user_id');
-                $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('historicos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('individual_id');
+            $table->foreign('individual_id')->references('id')->on('individuals');
+            //
 
                 $table->string('sexo');
                 $table->integer('edad');
@@ -31,9 +27,8 @@ class CreateIndividualsTable extends Migration
                 //
                 $table->integer('ingreso_laboral')->nullable();
                 $table->integer('ingreso_no_laboral')->nullable();
-
-                //
-                $table->timestamps();
+            //
+            $table->timestamps();
         });
     }
 
@@ -44,6 +39,6 @@ class CreateIndividualsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('individuals');
+        Schema::dropIfExists('historicos');
     }
 }

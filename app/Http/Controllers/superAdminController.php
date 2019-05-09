@@ -7,6 +7,7 @@ use App\User;
 use App\area;
 use App\encuesta;
 use App\individual;
+use App\historico;
 
 use Illuminate\Http\Request;
 class superAdminController extends Controller
@@ -155,6 +156,17 @@ class superAdminController extends Controller
      public function updateIndividual(request $request)
     {
             $individual = individual::find($request->id);
+            // un historico de cambios aca
+            $historico = new historico();
+            $historico->individual_id = $individual->id;
+            $historico->sexo = $individual->sexo;
+            $historico->edad = $individual->edad;
+            $historico->laboral = $individual->laboral;
+            $historico->ingreso_laboral = $individual->ingreso_laboral;
+            $historico->ingreso_no_laboral = $individual->ingreso_no_laboral;
+            $historico->comentario = $individual->comentario;
+            $historico->user_id = Auth::user()->id;
+            $historico->save();
         //  $individual = new individual();
             $individual->user_id = Auth::user()->id;
             $individual->sexo = $request['sexo'];
@@ -165,6 +177,9 @@ class superAdminController extends Controller
             $individual->comentario = $request['comentario'];
             $individual->super = Auth::user()->name;
             $individual->save();
+
+
+
                 return redirect('/admin/encuesta/'.$individual->encuesta->id);
     }
 }

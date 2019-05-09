@@ -79,6 +79,7 @@
                                     <th>Estimación</th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,7 +133,18 @@
                                            @endif
                                     </td>
                                 <td>
-                                <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>
+
+
+                                            <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>
+
+
+
+
+
+                                </td>
+                                <td>
+                                       <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$item->id])}}" role="button">Modificar</a>
+
                                 </td>
 
 

@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/supervisor/area/finalizar/{id}','SupervisorController@finalizarArea')->name("finalizarArea");
 
 
-    // 
+    //
     // Route::post('/supervisor/encuesta/edit/','supervisorController@edit')->name('supervisorModificarEncuesta');
     Route::post('/supervisor/encuesta/','supervisorController@ver')->name('supervisorVerDetalle');
     Route::get('/supervisor/encuesta/{id}','supervisorController@verGet');
@@ -85,6 +85,10 @@ Route::middleware('auth')->group(function () {
      */
     Route::get('/superadmin/home','superAdminController@home')->name('homeSuperAdmin');
     Route::get('/admin/encuesta/{id}',"superAdminController@verEncuesta")->name("superVerEncuesta");
+
+
+    Route::get('/superadmin/encuesta/edit/{id}','superAdminController@edit')->name("AdminEditEncuesta");
+    Route::post('/superadmin/encuesta/update/','superAdminController@update')->name("AdminUpdateEncuesta");
 
     /**
      * Super Admin

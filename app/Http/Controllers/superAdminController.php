@@ -44,18 +44,18 @@ class superAdminController extends Controller
                 if(!$encuesta->esPobre())
                 {
                     $detalles['pobres']++;
-                    
+
                 }
                 else
                 {
                     $detalles['no-pobres']++;
-                   
+
                 }
             }
             else
             {
                 $detalles['incompletos']++;
-                
+
             }
         }
 
@@ -68,6 +68,62 @@ class superAdminController extends Controller
         ));
 
 
+
+    }
+
+    //
+
+    public function edit( $id)
+    {
+        $e = encuesta::find($id);
+        return view('superadmin.editarEncuesta')->with('area',$e->area)->with('editar',true)->with('encuesta',$e);
+    }
+
+    public function update(request $request){
+        // $e = new encuesta();//
+        $e = encuesta::find($request->encuesta_id);
+
+        $e->listado = $request->listado;
+        $e->vivienda = $request->vivienda;
+        $e->hogar = $request->hogar;
+
+        $e->area_id = $request->area_id;
+        $e->user_id = Auth::user()->id;
+        $e->estado = "en espera";
+        if($request->efectiva == "efectivo")
+        {
+            $e->efectivo = true;
+            $e->cantidad = $request->cantidad;
+        }
+        else if($request->efectiva == 'otro')
+        {
+            $e->efectivo = 2;//otro caso
+            $e->otros_motivos = $request->otro_detalle;
+
+        }
+        else {
+            $e->efectivo = false;
+            $e->tipo_no_efectiva = $request->tipo_no_efectiva;
+            switch($request->tipo_no_efectiva)
+            {
+                case "ausente":
+                    $e->detalle_no_efectiva = $request->no_efectiva_ausente;
+                break;
+                case "rechazo":
+                    $e->detalle_no_efectiva = $request->no_efectiva_rechazo;
+                break;
+                case "otros":
+                $e->detalle_no_efectiva = $request->no_efectiva_otros;
+                break;
+            }
+        }
+        $e->comentario_admin = $request->comentarios;
+
+        $e->save();
+
+        echo $e->id;
+            // return redirect()->route('homeEncuestadores');
+              return redirect('/admin/encuesta/'.$e->id);
 
     }
 }

@@ -35,7 +35,9 @@
                          <li class="list-group-item"><strong>Condición: </strong>{{$encuesta->condicion()}}/ {{$encuesta->otros_motivos}}</li>
 
                         @endif
-                        <li class="list-group-item"><strong>Comentarios: </strong>{{$encuesta->comentarios}}</li>
+                        <li class="list-group-item"><strong>Comentarios Encuestador: </strong>{{$encuesta->comentarios}}</li>
+                        <li class="list-group-item"><strong>Comentarios Supervisor: </strong>{{$encuesta->comentario_supervisor}}</li>
+                        <li class="list-group-item"><strong>Comentarios Dirección: </strong>{{$encuesta->comentario_admin}}</li>
                     </ul>
                     {{-- detalle componentes --}}
                     @if($encuesta->componentes->count())
@@ -68,9 +70,13 @@
                 </div>
                 <div class="card-body">
                   <div class="row">
-                      <div class="col-md-2">
-                        <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
-                    </div>
+                        <div class="col-md-2">
+                            <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
+                        </div>
+                        <div class="col-md-2 offset-md-3">
+
+                        <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$encuesta->id])}}" role="button">Modificar</a>
+
 
                   </div>
                 </div>

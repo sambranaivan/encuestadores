@@ -33,7 +33,7 @@ class SupervisorController extends Controller
 
         $p = new pase();
         $p->area_id = $a->id;
-        $p->descripcion = "Supervision Finalizada - Pase a coordinacion";
+        $p->descripcion = "Supervision Finalizada - Pase a Dirección";
         $p->user_id = Auth::user()->id;
 
         $p->save();
@@ -125,7 +125,7 @@ class SupervisorController extends Controller
         $e = encuesta::find($request->encuesta_id);
         for ($i=1; $i <= $e->cantidad ; $i++)
         {
-            
+
             $individual = new individual();
             $individual->user_id = Auth::user()->id;
             $individual->encuesta_id = $e->id;
@@ -140,5 +140,5 @@ class SupervisorController extends Controller
     }
 
 
-   
+
 }

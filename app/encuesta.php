@@ -123,7 +123,7 @@ if($this->getMonts())
     }
 
     public function getMinimo(){
-        return $this->getPonds() * 7723;
+        return $this->getPonds() * $this->cbt();
     }
 
     public function getIndigente(){
@@ -142,6 +142,10 @@ if($this->getMonts())
 
     public function encuestador(){
         return $this->belongsTo('App\user');
+    }
+
+    public function cbt(){
+        return $this->area->cbt();
     }
 
 }

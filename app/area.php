@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\cbt;
+use App\cbt_mes;
 class area extends Model
 {
      use SoftDeletes;
@@ -11,6 +13,21 @@ class area extends Model
     public function encuestas()
     {
         return $this->hasMany('App\encuesta');
+    }
+
+    public function cbt(){
+        $anio = $this->anio;
+        $trimestre = $this->trimestre;
+        $semana = $this->semana;
+
+        $cbt = cbt::where('trimestre',$trimestre)->where('semana',$semana)->first();
+
+        $monto = cbt_mes::where('mes',$cbt->mes)->where('anio',$anio)->first();
+        if(!$monto)
+        {
+            $monto = cbt_mes::latest()->first();
+        }
+        return $monto->cbt;
     }
 
     public function getCompletas()
@@ -61,9 +78,9 @@ class area extends Model
 
     public function estado()
     {
-            
+
             foreach ($this->encuestas as $encuesta)
-            {   
+            {
             if(!$encuesta->estado())
             {
             return false;
@@ -71,7 +88,7 @@ class area extends Model
             }
 
             return true;
-            
+
     }
 
     public function encuestador()

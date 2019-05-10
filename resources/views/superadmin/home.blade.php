@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container">
+<div class="container-fluid">
 
 
                 @if(Auth::user()->role != 3)
@@ -75,7 +75,7 @@
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
                                     <th>Adulto Equivalente</th>
-                                    <th>Ingreso Necesario </br> $7723 CBT NEA</th>
+                                    <th>Ingreso Necesario </br>CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
                                     <th></th>

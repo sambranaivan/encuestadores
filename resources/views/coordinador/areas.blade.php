@@ -64,12 +64,21 @@
                                             <td>
                                                    asignado a
                                             </td>
-                                            <td> {{$item->supervisor->name}}</td>
+                                            @if($item->supervisor->name)
+                                            <td>{{$item->supervisor->name}}</td>
+                                            @else
+                                            <td></td>
+                                            @endif
                                              @elseif($item->status == "finalizado")
                                             <td>
                                                asignado a
                                             </td>
+                                            @if($item->supervisor->name)
                                             <td>{{$item->supervisor->name}}</td>
+                                            @else
+                                            <td></td>
+                                            @endif
+
                                              @elseif($item->status == "recibido")
                                              <td>
                                                     <form method="POST" action="{{route('asignarSupervisor')}}">

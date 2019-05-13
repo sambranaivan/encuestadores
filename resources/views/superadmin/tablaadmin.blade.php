@@ -20,7 +20,7 @@
                             <tbody>
                                 @foreach ($efectivos as $item)
                                 @if($item->area->status == $flag && !($item->listo))
-                                <tr
+                                <tr id={{"encuesta-".$item->id}}
 
                                 @if($item->estado())
 
@@ -88,7 +88,7 @@
                                      @if($item->listo)
                                     <a href="#" class="btn btn-sm  btn-primary active" role="button">Marcado como listo</a>
                                     @else
-                                    <a name="" id="" class="btn btn-success btn-sm" href="{{route('listoHome',['id'=>$item->id])}}" role="button">Listo para Cargar</a>
+                                        <a id="btn-listo" class="btn btn-success btn-sm btn-listo"  data-id="{{$item->id}}" role="button">Listo para Cargar</a>
                                     @endif
                                 </td>
 

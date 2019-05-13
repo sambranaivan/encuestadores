@@ -101,3 +101,8 @@ Route::middleware('auth')->group(function () {
 
 });
 
+// AJAX
+
+route::get('ajax/encuesta/listo/{id}','EncuestaController@listo');
+route::get('ajax/encuesta/listo/','EncuestaController@listo')->name('ajaxListo');;
+

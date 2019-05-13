@@ -7,6 +7,19 @@
 $(document).ready(function(){
 
       $(".table").tablesorter();
+
+
+      $(".btn-listo").click(function(){
+
+        $id = $(this).data('id');
+        console.log($id);
+
+        $.get('{{route("ajaxListo")}}'+"/"+$id,{},function(data){
+            $("#encuesta-"+$id).hide("fast");
+            console.log("hidden "+"#encuesta-"+$id)
+        })
+
+      })
 })
 </script>
 <div class="container-fluid">

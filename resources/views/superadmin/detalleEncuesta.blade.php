@@ -24,7 +24,7 @@
                             </li>
                         <li class="list-group-item"><strong>Listado: </strong>{{$encuesta->listado}}</li>
                         <li class="list-group-item"><strong>Vivienda/Hogar:</strong> {{$encuesta->vivienda}}/{{$encuesta->hogar}}</li>
-                            <li class="list-group-item"><strong>Visita: </strong>{{$encuesta->area->visita}}</li>
+                            <li class="list-group-item"><strong>Participación: </strong>{{$encuesta->area->visita}}</li>
                         @if($encuesta->efectivo == 0)
                         <li class="list-group-item"><strong>Condición: </strong>{{$encuesta->condicion()}}/ {{$encuesta->tipo_no_efectiva}}/{{$encuesta->detalle_no_efectiva}}</li>
                         @endif

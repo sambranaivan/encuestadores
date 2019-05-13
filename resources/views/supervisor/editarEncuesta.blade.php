@@ -16,9 +16,9 @@
                 $("#no_efectiva_rechazo").removeAttr('required');;
                 $("#no_efectiva_otros").removeAttr('required');;
                 $("#submit").html("Guardar y cargar componentes")
-                // 
+                //
 
-                // 
+                //
                 $("#otro_detalle").removeAttr('required')
             }
             else if (t.value == "no")
@@ -139,7 +139,7 @@ $(document).ready(function(){
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">Cargar Encuesta para Área {{$area->id }} </br> (Año:{{$area->anio}} Trimestre:{{$area->trimestre}} Semana:{{$area->semana}} Visita:{{$area->visita}})</div>
+            <div class="card-header">Cargar Encuesta para Área {{$area->id }} </br> (Año:{{$area->anio}} Trimestre:{{$area->trimestre}} Semana:{{$area->semana}} Participación:{{$area->visita}})</div>
 
                 <div class="card-body">
                 <form class="form" method="POST"
@@ -318,7 +318,7 @@ $(document).ready(function(){
                         {{--  --}}
 
                     </form>
-                   
+
                 </div>
             </div>
         </div>

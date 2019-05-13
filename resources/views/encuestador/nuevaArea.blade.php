@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                        <div class="col-md-4"><div class="form-group">
-                         <label for="">Visita</label>
+                         <label for="">Participación</label>
                          <input type="number" name="visita"
                            class="form-control" min="0" step=1 max=9 id="" aria-describedby="helpId" placeholder="" required>
 

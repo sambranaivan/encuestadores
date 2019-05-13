@@ -18,7 +18,7 @@
                                 <th>Año</th>
                                 <th>Trimestre</th>
                                 <th>Semana</th>
-                                <th>Visita</th>
+                                <th>Participación</th>
                             </tr>
                         </thead>
                         <tbody>

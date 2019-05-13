@@ -73,11 +73,6 @@
 
 
                                             <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>
-
-
-
-
-
                                 </td>
                                 <td>
                                        <a name="" id="" class="btn btn-primary btn-sm" href="{{route('AdminEditEncuesta',['id'=>$item->id])}}" role="button">Modificar</a>

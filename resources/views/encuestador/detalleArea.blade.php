@@ -18,7 +18,7 @@
                                 <th>Año</th>
                                 <th>Trimestre</th>
                                 <th>Semana</th>
-                                <th>Visita</th>
+                                <th>Participación</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@
                         <button type="submit" class="btn btn-sm btn-primary btn-warning text-dark">Modificar</button>
                         </form>
                                                 @if(Auth::user()->isEncuestador())
-                                                
+
                                                     <form method="POST" action="{{route('eliminarEncuesta')}}">
                             @csrf
                         <input type="hidden" value="{{$item->id}}" name="encuesta_id">

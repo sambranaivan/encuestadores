@@ -139,7 +139,7 @@ $(document).ready(function(){
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">Cargar Encuesta para Área {{$area->id }} </br> (Año:{{$area->anio}} Trimestre:{{$area->trimestre}} Semana:{{$area->semana}} Visita:{{$area->visita}})</div>
+            <div class="card-header">Cargar Encuesta para Área {{$area->id }} </br> (Año:{{$area->anio}} Trimestre:{{$area->trimestre}} Semana:{{$area->semana}} Participación:{{$area->visita}})</div>
 
                 <div class="card-body">
                 <form class="form" method="POST"

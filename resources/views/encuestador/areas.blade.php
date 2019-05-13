@@ -23,7 +23,7 @@
                                     <th>Año</th>
                                     <th>Trimestre</th>
                                     <th>Semana</th>
-                                    <th>Visita n°</th>
+                                    <th>Participación n°</th>
                                     <th>Estado</th>
                                     <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
                                     <th>Acciones</th>

@@ -44,7 +44,7 @@
                                     <td>
                                         {{$item->hogar}}
                                     </td>
-                                      <td>Tri:{{$item->area->trimestre}} Sem:{{$item->area->semana}}</br>{{$item->status()}}</td>
+                                      <td>Año:{{$item->area->anio}} Tri:{{$item->area->trimestre}} Sem:{{$item->area->semana}}</br>{{$item->status()}}</td>
                                 <td>{{$item->getMonts()}}</td>
                                 <td>
                                     {{$item->componentes->count()}}

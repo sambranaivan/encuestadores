@@ -111,15 +111,15 @@ $(document).ready(function(){
                     </div>
 
                     <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
-                        Historicos
-                        {{-- @include('superadmin.tablaHisto',['efectivos'=>$efectivos,'flag'=>'en supervision']) --}}
+                        {{-- Historicos --}}
+                        @include('superadmin.tabla-historico',['efectivos'=>$efectivos])
                     </div>
                     <div class="tab-pane fade" id="entregado" role="tabpanel" aria-labelledby="profile-tab">
-                        Entregado
+                        {{-- Entregado --}}
                          @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'entregado'])
                     </div>
                     <div class="tab-pane fade" id="coord" role="tabpanel" aria-labelledby="profile-tab">
-                        En Coordinación
+                        {{-- En Coordinación --}}
                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'recibido'])
                     </div>
                     </div>

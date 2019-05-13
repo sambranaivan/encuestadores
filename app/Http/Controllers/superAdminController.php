@@ -42,7 +42,9 @@ class superAdminController extends Controller
         );
         foreach ($e as $encuesta)
         {
-            $detalles['totales']++;
+           if(!$encuesta->isHistorico())
+           {
+                $detalles['totales']++;
             if($encuesta->estado())
             {
                 $detalles['completos']++;
@@ -62,6 +64,7 @@ class superAdminController extends Controller
                 $detalles['incompletos']++;
 
             }
+           }
         }
 
         $historicos = [];

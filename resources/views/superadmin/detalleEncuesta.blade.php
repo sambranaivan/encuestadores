@@ -76,7 +76,7 @@
                 <div class="card-body">
                   <div class="row">
                         <div class="col-md-2">
-                            <a name="" id="" class="btn btn-primary btn-sm" href="javascript:history.back(1)" role="button">Volver</a>
+                            <a name="" id="" class="btn btn-primary btn-sm" href="{{route('homeSuperAdmin')}}" role="button">Volver</a>
                         </div>
                         @if($encuesta->area->status == 'finalizado')
                         <div class="col-md-2 offset-md-3">

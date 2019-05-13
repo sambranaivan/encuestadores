@@ -5,7 +5,7 @@
                                     {{-- <th>estado</th> --}}
                                      <th>listado</th>
                                       <th>hogar</th>
-                                    <th>Situacion</th>
+                                    <th>Fecha</th>
                                     <th>Ingreso Total</th>
                                     <th>Componentes</th>
                                     <th>Adulto Equivalente</th>
@@ -44,7 +44,7 @@
                                     <td>
                                         {{$item->hogar}}
                                     </td>
-                                <td>{{$item->status()}}</td>
+                                <td>Tri:{{$item->area->trimestre}} Sem:{{$item->area->semana}}</td>
                                 <td>{{$item->getMonts()}}</td>
                                 <td>
                                     {{$item->componentes->count()}}

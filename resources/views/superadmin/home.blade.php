@@ -6,7 +6,7 @@
 
 $(document).ready(function(){
 
-      $("#table").tablesorter();
+      $(".table").tablesorter();
 })
 </script>
 <div class="container-fluid">

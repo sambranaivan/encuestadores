@@ -8,6 +8,7 @@ use App\area;
 use App\encuesta;
 use App\individual;
 use App\historico;
+use App\historico_e;
 
 use Illuminate\Http\Request;
 
@@ -69,6 +70,34 @@ class SupervisorController extends Controller
         // $e = new encuesta();//
         $e = encuesta::find($request->encuesta_id);
 
+        // save historico
+        $h = new historico_e();
+            $h->encuesta_id = $e->id;
+            $h->user_id = Auth::user()->id;
+            $h->listado = $e->listado;
+            $h->cantidad = $e->cantidad;
+            $h->vivienda = $e->vivienda;
+            //
+            $h->efectivo = $e->efectivo;
+            //$h->montos_completos = $e->//$h->montos_completos;
+            //
+            $h->tipo_no_efectiva = $e->tipo_no_efectiva;
+            $h->detalle_no_efectiva = $e->detalle_no_efectiva;
+
+            $h->estado = $e->estado;
+
+            $h->comentarios = $e->comentarios;
+            $h->revision = $e->revision;
+            $h->hogar = $e->hogar;
+            $h->otros_motivos = $e->otros_motivos;
+            $h->supersuper = $e->supersuper;
+            $h->comentario_supervisor = $e->comentario_supervisor;
+            $h->comentario_admin = $e->comentario_admin;
+            $h->revisado = $e->revisado;
+            $h->listo = $e->listo;
+        $h->save();
+
+        // end historico
         $e->listado = $request->listado;
         $e->vivienda = $request->vivienda;
         $e->hogar = $request->hogar;

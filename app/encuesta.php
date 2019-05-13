@@ -9,6 +9,10 @@ class encuesta extends Model
         use SoftDeletes;
     //
 
+    public function historico(){
+        return $this->hasMany('App\historico_e');
+    }
+
      public function condicion(){
         switch ($this->efectivo) {
             case 0:
@@ -25,6 +29,10 @@ class encuesta extends Model
                 # code...
                 break;
         }
+    }
+
+    public function isHistorico(){
+        return $this->area->isHistorico();
     }
 
     public function estado(){

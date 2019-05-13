@@ -21,7 +21,10 @@ class superAdminController extends Controller
         return view('superadmin.detalleEncuesta')->with('encuesta',$e);
     }
     public function home(){
+        // solo la de ESTE cuatrimestre
         $areas = area::all()->sortByDesc('area');
+
+
         $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
         $counts = array('cargando' => 0,'rechazado' => 0,'finalizado' => 0,'en supervision'=>0,'entregado' => 0,'recibido' => 0,'en direccion' => 0,'con autorizacion' => 0);
@@ -61,12 +64,26 @@ class superAdminController extends Controller
             }
         }
 
+        $historicos = [];
+        foreach ($areas as $a) {
+            if($a->isHistorico())
+            {
+                $historicos[] = $a;
+            }
+            else
+            {
+                $actuales[] = $a;
+            }
+        }
+
+
 
         return view('superadmin.home',array(
-                'areas'=>$areas,
+                'areas'=>$actuales,
                 'counts'=>$counts,
                 'efectivos'=>$e,
-                'detalles'=>$detalles
+                'detalles'=>$detalles,
+                'historicos'=>$historicos,
         ));
 
 

@@ -15,6 +15,16 @@ class area extends Model
         return $this->hasMany('App\encuesta');
     }
 
+    public function isHistorico(){
+        if($this->anio == '2019' && $this->trimestre == 1)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function cbt(){
         $anio = $this->anio;
         $trimestre = $this->trimestre;

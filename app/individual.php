@@ -8,6 +8,11 @@ class individual extends Model
 {
         use SoftDeletes;
 
+    public function historico(){
+        return $this->hasMany('App\historico');
+    }
+
+
     public function encuesta()
     {
         return $this->belongsTo('App\encuesta');

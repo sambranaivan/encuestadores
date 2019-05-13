@@ -21,4 +21,12 @@ class EncuestaController extends Controller
         }
     }
 
+    //
+
+    public function historicos($id)
+    {
+        $e = encuesta::find($id);
+        return view('superadmin.historicos',['encuesta',$e]);
+    }
+
 }

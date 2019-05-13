@@ -36,6 +36,7 @@ class encuesta extends Model
                     {
                         return false;
                     }
+
                 }
 
         return true;
@@ -47,7 +48,8 @@ class encuesta extends Model
 
     }
 
-    public function esPobre(){
+    public function esPobre()
+    {
         if($this->estado())
         {
             if($this->getMinimo() < $this->getMonts())
@@ -73,11 +75,11 @@ class encuesta extends Model
 
     public function pordiff()
     {
-if($this->getMonts())
-{
-    return  round(($this->diff() * 100)/$this->getMonts());
+        if($this->getMonts())
+        {
+            return  round(($this->diff() * 100)/$this->getMonts());
 
-}
+        }
     }
 
     public function status(){
@@ -137,8 +139,6 @@ if($this->getMonts())
     public function area(){
         return $this->belongsTo('App\area');
     }
-
-
 
     public function encuestador(){
         return $this->belongsTo('App\user');

@@ -21,7 +21,7 @@ class individual extends Model
         if($laboral == -9 || $no_laboral == -9){
             return -9;
         }
-      
+
         return $laboral + $no_laboral;
     }
 
@@ -187,6 +187,13 @@ class individual extends Model
 
 
     public function estado(){
+
+
+        if($this->getMonts() == -9)
+        {
+          return false;
+        }
+
         if($this->laboral == 'Trabaja' && ($this->ingreso_laboral <0 || is_null($this->ingreso_laboral)))
         {
             return false;//aca falta el coso

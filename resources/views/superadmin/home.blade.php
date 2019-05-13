@@ -112,7 +112,7 @@ $(document).ready(function(){
 
                     <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
                         Historicos
-                        @include('superadmin.tablaHisto',['efectivos'=>$efectivos,'flag'=>'en supervision'])
+                        {{-- @include('superadmin.tablaHisto',['efectivos'=>$efectivos,'flag'=>'en supervision']) --}}
                     </div>
                     <div class="tab-pane fade" id="entregado" role="tabpanel" aria-labelledby="profile-tab">
                         Entregado

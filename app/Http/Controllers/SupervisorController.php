@@ -7,6 +7,7 @@ use App\pase;
 use App\area;
 use App\encuesta;
 use App\individual;
+use App\historico;
 
 use Illuminate\Http\Request;
 
@@ -137,6 +138,40 @@ class SupervisorController extends Controller
             $individual->save();
         }
           return redirect('/supervisor/encuesta/'.$e->id);
+    }
+
+
+      public function editIndividual($id){
+        $i = individual::find($id);
+
+        return view('supervisor.editIndividual')->with('individual',$i);
+    }
+
+    public function updateIndividual(request $request)
+    {
+        $individual = individual::find($request->id);
+
+          $historico = new historico();
+            $historico->individual_id = $individual->id;
+            $historico->sexo = $individual->sexo;
+            $historico->edad = $individual->edad;
+            $historico->laboral = $individual->laboral;
+            $historico->ingreso_laboral = $individual->ingreso_laboral;
+            $historico->ingreso_no_laboral = $individual->ingreso_no_laboral;
+            $historico->comentario = "modificado por el supervisor";
+            $historico->user_id = Auth::user()->id;
+            $historico->save();
+
+
+        //  $individual = new individual();
+            $individual->user_id = Auth::user()->id;
+            $individual->sexo = $request['sexo'];
+            $individual->edad = $request['edad'];
+            $individual->laboral = $request['laboral'];
+            $individual->ingreso_laboral = $request['ingreso_laboral'];
+            $individual->ingreso_no_laboral = $request['ingreso_no_laboral'];
+            $individual->save();
+            return redirect('supervisor/encuesta/'.$individual->encuesta->id);
     }
 
 

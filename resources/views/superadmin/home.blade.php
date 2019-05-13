@@ -88,18 +88,12 @@ $(document).ready(function(){
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#finalizado" role="tab" aria-controls="home" aria-selected="true">Finalizado</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">En supervisión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="cargando-tab" data-toggle="tab" href="#cargando" role="tab" aria-controls="cargando" aria-selected="false">Cargando</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="histo-tab" data-toggle="tab" href="#histo" role="tab" aria-controls="histo" aria-selected="false">Historico</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a></li>
+                        <li class="nav-item"><a class="nav-link" id="cargando-tab" data-toggle="tab" href="#cargando" role="tab" aria-controls="cargando" aria-selected="false">Cargando</a></li>
+                        <li class="nav-item"><a class="nav-link" id="entregado-tab" data-toggle="tab" href="#entregado" role="tab" aria-controls="entregado" aria-selected="false">Entregados</a></li>
+                        <li class="nav-item"><a class="nav-link" id="coord-tab" data-toggle="tab" href="#coord" role="tab" aria-controls="coord" aria-selected="false">En Coordinacion</a></li>
+                        <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">En supervisión</a></li>
+                        <li class="nav-item"><a class="nav-link" id="histo-tab" data-toggle="tab" href="#histo" role="tab" aria-controls="histo" aria-selected="false">Historico</a></li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="finalizado" role="tabpanel" aria-labelledby="home-tab">
@@ -119,6 +113,14 @@ $(document).ready(function(){
                     <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
                         Historicos
                         {{-- @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'en supervision']) --}}
+                    </div>
+                    <div class="tab-pane fade" id="entregado" role="tabpanel" aria-labelledby="profile-tab">
+                        Entregado
+                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'entregado'])
+                    </div>
+                    <div class="tab-pane fade" id="coord" role="tabpanel" aria-labelledby="profile-tab">
+                        En Coordinación
+                        @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'recibido'])
                     </div>
                     </div>
 

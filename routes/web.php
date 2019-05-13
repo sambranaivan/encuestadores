@@ -67,16 +67,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/supervisor/area/finalizar/{id}','SupervisorController@finalizarArea')->name("finalizarArea");
 
 
+
+    Route::get('supervisor/individual/editar/{id}','supervisorController@editIndividual')->name('supervisoreditarIndividual');
+    Route::post('supervisor/individual/update','supervisorController@updateIndividual')->name('supervisorupdateIndividual');
+
+
     //
-    // Route::post('/supervisor/encuesta/edit/','supervisorController@edit')->name('supervisorModificarEncuesta');
+
     Route::post('/supervisor/encuesta/','supervisorController@ver')->name('supervisorVerDetalle');
     Route::get('/supervisor/encuesta/{id}','supervisorController@verGet');
     Route::post('/supervisor/encuesta/edit/','supervisorController@edit')->name('supervisorModificarEncuesta');
     Route::post('/supervisor/encuesta/update/','supervisorController@update')->name('supervisorUpdateEncuesta');
 
-    Route::get('/supervisor/individual/{id}','supervisorController@showIndividual')->name('supervisorShowIndividual');
-
-    Route::post('/supervisor/individual/save/','supervisorController@saveIndividual')->name('supervisorSaveIndividual');
 
 
 

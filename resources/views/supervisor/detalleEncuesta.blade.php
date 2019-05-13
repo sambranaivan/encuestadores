@@ -64,7 +64,7 @@
                                 <td>{{$item->ingreso_laboral}}</td>
                                 <td>{{$item->ingreso_no_laboral}}</td>
                                 <td>
-                                <a class="btn btn-primary btn-sm" href="{{route('editarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
+                                <a class="btn btn-primary btn-sm" href="{{route('supervisoreditarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
                                 </td>
                                </tr>
                                @endforeach

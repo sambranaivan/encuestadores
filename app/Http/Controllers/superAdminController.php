@@ -90,7 +90,7 @@ class superAdminController extends Controller
 
         $e->area_id = $request->area_id;
         $e->user_id = Auth::user()->id;
-        $e->estado = "en espera";
+        $e->estado = "revisada";
         if($request->efectiva == "efectivo")
         {
             $e->efectivo = true;

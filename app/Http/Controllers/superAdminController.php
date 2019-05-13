@@ -66,7 +66,7 @@ class superAdminController extends Controller
 
         $historicos = [];
         foreach ($areas as $a) {
-            if($a->isHistorico())
+            if(!$a->isHistorico())
             {
                 $historicos[] = $a;
             }

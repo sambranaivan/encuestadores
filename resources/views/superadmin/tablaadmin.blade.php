@@ -19,7 +19,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($efectivos as $item)
-                                @if($item->area->status == $flag && !($item->listo))
+                                @if($item->area->status == $flag && !($item->listo) && !($item->isHistorico()))
                                 <tr id={{"encuesta-".$item->id}}
 
                                 @if($item->estado())

@@ -67,7 +67,7 @@ class superAdminController extends Controller
         $historicos = [];
         $actuales = [];
         foreach ($areas as $a) {
-            if($a->trimestre == 1 && $a->anio = 2019)
+            if($a->isHistorico())
             {
                 $historicos[] = $a;
             }

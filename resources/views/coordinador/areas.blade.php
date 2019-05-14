@@ -75,13 +75,17 @@
                                             </td>
                                             @endif
                                              @elseif($item->status == "finalizado")
-                                            <td>
-                                               asignado a
+                                           <td>
+                                                <a name="" id="" class="btn btn-danger btn-sm" href="{{route('desasginar',['id'=>$item->id])}}" role="button">DesAsignar</a>
                                             </td>
+
                                             @if($item->supervisor->name)
-                                            <td>{{$item->supervisor->name}}</td>
+
+                                            <td>asignado a </br>{{$item->supervisor->name}}</td>
                                             @else
-                                            <td></td>
+                                            <td>
+                                                asignado a
+                                            </td>
                                             @endif
 
                                              @elseif($item->status == "recibido")

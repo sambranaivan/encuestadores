@@ -156,4 +156,16 @@ class encuesta extends Model
         return $this->area->cbt();
     }
 
+
+    public function fueSuper(){
+        foreach ($this->componentes as $individual)
+        {
+            if($individual->fueSuper())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

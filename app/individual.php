@@ -212,7 +212,7 @@ class individual extends Model
     public function fueSuper(){
         if(is_null($this->super))
         {
-            return false;
+            return true;
         }
     }
 

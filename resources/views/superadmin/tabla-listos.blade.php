@@ -12,6 +12,7 @@
                                     <th>Ingreso Necesario </br>CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
+                                    <th>Super</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -69,10 +70,17 @@
                                             ( {{$item->pordiff()}} %)
                                            @endif
                                     </td>
+                                    <td>
+                                        @if($item->fueSuper())
+                                        Super
+                                        @else
+                                        --
+                                        @endif
+                                    </td>
                                 <td>
 
 
-                                            <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>
+                                    <a name="" id="" class="btn btn-primary btn-sm" href="{{route('superVerEncuesta',['id'=>$item->id])}}" role="button">Ver detalle</a>
 
 
 

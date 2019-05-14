@@ -94,11 +94,6 @@
                                             </td>
                                             <td></td>
                                             @endif
-
-
-
-
-
                                 </tr>
                         @endforeach
                     </table>

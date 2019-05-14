@@ -16,7 +16,7 @@
                                <div class="form-group">
                                  <label for="">Area</label>
                                  <input type="number" name="area"
-                                   class="form-control" min="0" step=1 max=9999 id="" aria-describedby="helpId" placeholder="" required>
+                                   class="form-control" min="0" step=1 max=9999 id="" value="" aria-describedby="helpId" placeholder="" required>
 
                                </div>
                            </div>

@@ -174,9 +174,9 @@ $(document).ready(function(){
                            @if($editar)
                             value="{{$encuesta->listado}}"
                           @else
-                          value="1"
+                          value=""
                           @endif
-                            class="form-control" name="listado"  aria-describedby="helpId" placeholder="">
+                            class="form-control" name="listado"  aria-describedby="helpId" placeholder="" required>
                         </div>
                         </div>
                         <div class="col-md-4">

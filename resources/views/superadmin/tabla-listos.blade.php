@@ -70,13 +70,15 @@
                                             ( {{$item->pordiff()}} %)
                                            @endif
                                     </td>
-                                    <td>
-                                        @if($item->fueSuper())
-                                        Super
-                                        @else
-                                        --
-                                        @endif
+                                    @if($item->fueSuper())
+                                    <td class="bg-success text-white">
+                                    Super
                                     </td>
+                                        @else
+                                    <td>
+
+                                    </td>
+                                        @endif
                                 <td>
 
 

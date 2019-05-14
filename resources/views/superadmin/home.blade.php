@@ -100,7 +100,7 @@ $(document).ready(function(){
                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'finalizado'])
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'en supervision'])
+                        @include('superadmin.tabla-supervisor',['efectivos'=>$efectivos])
                     </div>
                     <div class="tab-pane fade" id="cargando" role="tabpanel" aria-labelledby="cargando-tab">
                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'cargando'])

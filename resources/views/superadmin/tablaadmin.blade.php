@@ -12,6 +12,7 @@
                                     <th>Ingreso Necesario </br>CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
+                                    <th>Super</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -69,6 +70,15 @@
                                             ( {{$item->pordiff()}} %)
                                            @endif
                                     </td>
+                                    @if($item->fueSuper())
+                                    <td class="bg-success text-white">
+                                    Super
+                                    </td>
+                                        @else
+                                    <td>
+
+                                    </td>
+                                        @endif
                                 <td>
 
 

@@ -22,6 +22,15 @@ class CoordinadorController extends Controller
 
     }
 
+
+    public function desasignar($id)
+    {
+        $areas = area::find($id);
+        $areas->status = 'recibido';
+        $areas->save();
+        return redirect()->route('homeCoordinador');
+    }
+
     public function rechazar(request $request){
         $a = area::find($request->area_id);
         $a->status = 'rechazado';//pasa para el coordinador

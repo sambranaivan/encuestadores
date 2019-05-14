@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/coordinador/area/{id}',"CoordinadorController@verArea")->name("coordinadorDetalleArea");
     Route::get('/coordinador/encuesta/{id}',"CoordinadorController@verEncuesta")->name("coordinadorDetalleEncuesta");
 
+    Route::get('/coordinador/desasignar/{id}',"CoordinadorController@desasignar")->name('desasginar');
+
 
     /**
      * Supervisor

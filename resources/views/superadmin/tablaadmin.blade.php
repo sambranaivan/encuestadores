@@ -72,7 +72,7 @@
                                     </td>
                                     @if($item->fueSuper())
                                     <td class="bg-success text-white">
-                                    Super
+                                    <a name="" id="" class="btn btn-primary btn-sm btn-success" href="#" role="button">Super</a>
                                     </td>
                                         @else
                                     <td>

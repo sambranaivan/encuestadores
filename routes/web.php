@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
     /**
      * Super Admin
      */
+    Route::get('/superadmin/historico/{id}','EncuestaController@historico')->name('historico');
 
 
 });

@@ -103,7 +103,7 @@ class SupervisorController extends Controller
         $e->hogar = $request->hogar;
 
         $e->area_id = $request->area_id;
-        $e->user_id = Auth::user()->id;
+        // $e->user_id = Auth::user()->id;//no cambio el dueño de la encuesta tampoco
         $e->estado = "en espera";
         if($request->efectiva == "efectivo")
         {
@@ -188,12 +188,12 @@ class SupervisorController extends Controller
             $historico->ingreso_laboral = $individual->ingreso_laboral;
             $historico->ingreso_no_laboral = $individual->ingreso_no_laboral;
             $historico->comentario = "modificado por el supervisor";
-            $historico->user_id = Auth::user()->id;
+            $historico->user_id = Auth::user()->id;///quien modifico
             $historico->save();
 
 
         //  $individual = new individual();
-            $individual->user_id = Auth::user()->id;
+            // $individual->user_id = Auth::user()->id;//no cambio el dueño el de la encuesta
             $individual->sexo = $request['sexo'];
             $individual->edad = $request['edad'];
             $individual->laboral = $request['laboral'];

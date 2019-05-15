@@ -23,10 +23,10 @@ class EncuestaController extends Controller
 
     //
 
-    public function historicos($id)
+    public function historico($id)
     {
         $e = encuesta::find($id);
-        return view('superadmin.historicos',['encuesta',$e]);
+        return view('superadmin.historicos')->with('encuesta',$e);
     }
 
 }

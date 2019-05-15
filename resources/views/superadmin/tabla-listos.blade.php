@@ -71,8 +71,8 @@
                                            @endif
                                     </td>
                                     @if($item->fueSuper())
-                                    <td class="bg-success text-white">
-                                    Super
+                                    <td>
+                                    <a name="" id="" class="btn btn-primary btn-sm btn-success" href="{{route('historico',['id'=>$item->id])}}" role="button">Super</a>
                                     </td>
                                         @else
                                     <td>

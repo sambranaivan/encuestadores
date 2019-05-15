@@ -32,7 +32,12 @@ class encuesta extends Model
     }
 
     public function isHistorico(){
-        return $this->area->isHistorico();
+        if($this->area)
+        {
+            return $this->area->isHistorico();
+        }
+        return false;
+
     }
 
     public function estado(){
@@ -166,6 +171,13 @@ class encuesta extends Model
             }
         }
         return false;
+    }
+
+
+    //
+
+    public function cambios(){
+        return $this->hasMany('App\historico_e');
     }
 
 }

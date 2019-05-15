@@ -139,7 +139,7 @@ class superAdminController extends Controller
         $e->hogar = $request->hogar;
 
         $e->area_id = $request->area_id;
-        $e->user_id = Auth::user()->id;
+        // $e->user_id = Auth::user()->id;//no cambio el dueño de la encuesta
         $e->estado = "revisada";
         if($request->efectiva == "efectivo")
         {
@@ -218,7 +218,7 @@ class superAdminController extends Controller
             $historico->user_id = Auth::user()->id;
             $historico->save();
         //  $individual = new individual();
-            $individual->user_id = Auth::user()->id;
+            // $individual->user_id = Auth::user()->id;/no cambio el dueño orginal de la encuesta
             $individual->sexo = $request['sexo'];
             $individual->edad = $request['edad'];
             $individual->laboral = $request['laboral'];

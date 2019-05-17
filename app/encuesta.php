@@ -180,4 +180,10 @@ class encuesta extends Model
         return $this->hasMany('App\historico_e');
     }
 
+    public function ingreso_individual()
+    {
+        $individual = $this->getMonts() / $this->getPonds();
+        return $individual;
+    }
+
 }

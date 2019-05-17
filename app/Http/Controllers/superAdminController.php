@@ -29,11 +29,6 @@ class superAdminController extends Controller
 
         $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
-        $counts = array('cargando' => 0,'rechazado' => 0,'finalizado' => 0,'en supervision'=>0,'entregado' => 0,'recibido' => 0,'en direccion' => 0,'con autorizacion' => 0);
-        foreach ($areas as $area)
-        {
-            $counts[$area->status]++;
-        }
 
         $detalles = array(
             'totales'=>0,
@@ -86,7 +81,7 @@ class superAdminController extends Controller
 
         return view('superadmin.home',array(
                 'areas'=>$actuales,
-                'counts'=>$counts,
+                // 'counts'=>$counts,
                 'efectivos'=>$e,
                 'detalles'=>$detalles,
                 'historicos'=>$historicos,

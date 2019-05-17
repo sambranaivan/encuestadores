@@ -220,4 +220,20 @@ class individual extends Model
         }
     }
 
+    public function esPobre()
+    {
+        $ingreso_individual_del_hogar = $this->encuesta->ingreso_individual();
+
+        $minimo = $this->getPond() * $ingreso_individual_del_hogar;
+
+        if($minimo < $this->encuesta->cbt())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

@@ -52,6 +52,7 @@
                                 <th>Condición Laboral</th>
                                 <th>Ingreso no Laboral</th>
                                 <th>Ingreso Laboral</th>
+                                <th>Pobreza Individual</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -63,6 +64,11 @@
                                     <td>{{$item->laboral}} </td>
                                     <td>{{$item->ingreso_no_laboral}}</td>
                                     <td>{{$item->ingreso_laboral}}</td>
+                                    <td>
+                                        @if($item->esPobre())
+                                            Es Pobre
+                                        @endif
+                                    </td>
                                      <td>
                                 <a class="btn btn-primary btn-sm" href="{{route('AdminEditarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
                                 </td>

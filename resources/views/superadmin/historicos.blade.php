@@ -16,7 +16,7 @@
                                 <th>Sexo</th>
                                 <th>Laboral</th>
                                 <th>No Laboral</th>
-                                <th></th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +36,9 @@
                                 </td>
                                 <td>
                                     @if($item->fueSuper())
-                                        Fue Modificado
+                                <a name="" id="" class="btn btn-primary" href="{{route('historicoIndividual',['id'=>$item->id])}}" role="button">
+                                            Ver Modificaciones
+                                        </a>
                                     @endif
                                 </td>
                             </tr>

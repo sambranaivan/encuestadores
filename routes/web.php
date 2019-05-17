@@ -104,6 +104,8 @@ Route::middleware('auth')->group(function () {
      */
     Route::get('/superadmin/historico/{id}','EncuestaController@historico')->name('historico');
 
+    Route::get('/superadmin/historico/individual/{id}','EncuestaController@modificaciones')->name('historicoIndividual');
+
 
 });
 

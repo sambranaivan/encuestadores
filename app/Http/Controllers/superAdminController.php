@@ -20,6 +20,8 @@ class superAdminController extends Controller
         $e = encuesta::find($id);
         return view('superadmin.detalleEncuesta')->with('encuesta',$e);
     }
+
+
     public function home(){
         // solo la de ESTE cuatrimestre
         $areas = area::all()->sortByDesc('area');

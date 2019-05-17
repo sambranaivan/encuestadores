@@ -33,7 +33,7 @@ $(document).ready(function(){
                         <h4 class="card-title">Panel de Administración</h4>
 
                     </div>
-                  <div class="card-body">
+                  {{-- <div class="card-body">
                    <h3>Resumen de Carga</h3>
                    <table class="table table-sm table-stripped table-dark">
                        <thead>
@@ -55,7 +55,7 @@ $(document).ready(function(){
                            </tr>
                        </tbody>
                    </table>
-                  </div>
+                  </div> --}}
                   <div class="card-body">
                         <h3>Cálculo de estimación de pobreza</h3>
                         <table class="table table-sm table-stripped table-dark">

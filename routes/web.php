@@ -106,7 +106,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/superadmin/historico/individual/{id}','EncuestaController@modificaciones')->name('historicoIndividual');
 
-
+    Route::get("/superadmin/indicadores/{anio}/{trimestre}",'EncuestaController@indicadores')->name('indicadores');
 });
 
 // AJAX

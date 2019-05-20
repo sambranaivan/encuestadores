@@ -70,9 +70,9 @@ class encuesta extends Model
                 return true;
             }
             else {
-                {
-                    return false;
-                }
+
+            return false;
+
             }
         }
         else

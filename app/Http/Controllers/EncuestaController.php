@@ -43,22 +43,27 @@ class EncuestaController extends Controller
     public function indicadores($anio,$trimestre){
 
             //   $encuestas = encuesta::where('efectivo',1)->get();//me traigo todas las encuestas
-            $areas = area::where('trimestre',$trimestre)->where('anio',$anio);
 
-            $encuestas = DB::table('encuestas')//encuestas
-            ->leftJoin('areas','encuestas.area_id','=','areas.id')
-            ->where('areas.trimestre',$trimestre)
-            ->where('areas.anio',$anio)->get();
-            // $encuestas = encuesta::hydrate($encuestas);
 
-            echo "Totales: ".$encuestas->count()."</br>";
+            $encuestas = encuesta::all();
+
+            $filtrado = [];
+            foreach ($encuestas as $en)
+            {
+                if($en->area->trimestre == $trimestre && $en->area->anio == $anio)
+                {
+                    $filtrado[] = $en;
+                }
+            }
+
+            echo "Totales: ".sizeof($filtrado)."</br>";
 
             //EFECTIVOS y //NO EFECTIVOS
 
                                                                                 $efectivos = [];
                                                                                 $no_efectivos = [];
 
-            foreach ($encuestas as $e)
+            foreach ($filtrado as $e)
             {
                 if($e->efectivo)
                 {

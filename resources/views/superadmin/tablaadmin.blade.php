@@ -85,12 +85,7 @@
                                         @endif
                                     <td>
 
-                                    </td>
-                                    @else
-                                    <td>
 
-                                    </td>
-                                    @endif
                                 <td>
 
 

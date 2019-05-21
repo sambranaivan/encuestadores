@@ -75,8 +75,14 @@ class EncuestaController extends Controller
                 }
             }
 
-            echo "Efectivas: ".sizeof($efectivos)."/".$encuestas->count()."</br>";
-            echo "No Efectivas: ".sizeof($no_efectivos)."/".$encuestas->count()."</br>";
+            echo "<p>Efectivas: ".sizeof($efectivos)."/".sizeof($filtrado);
+            $p = round(sizeof($efectivos)*100/sizeof($filtrado));
+            echo " ($p%)</br>";
+
+            echo "No Efectivas: ".sizeof($no_efectivos)."/".sizeof($filtrado);
+            $p = round(sizeof($no_efectivos)*100/sizeof($filtrado));
+            echo " ($p%)</br></p>";
+
 
             //COMPLETOS
 
@@ -98,8 +104,12 @@ class EncuestaController extends Controller
                     $incompletos[] = $e;
                 }
             }
-            echo "Completos: ".sizeof($completos)."/".sizeof($efectivos)."</br>";
-            echo "Incompletos: ".sizeof($incompletos)."/".sizeof($efectivos)."</br>";
+            echo "<p>Completos: ".sizeof($completos)."/".sizeof($efectivos);
+            $p = round(sizeof($completos)*100/sizeof($efectivos));
+              echo " ($p%)</br>";
+            echo "Incompletos: ".sizeof($incompletos)."/".sizeof($efectivos);
+            $p = round(sizeof($incompletos)*100/sizeof($efectivos));
+              echo " ($p%)</br></p>";
 
             //POBRES nivel hogar
                                                                                 $pobres = [];
@@ -116,7 +126,12 @@ class EncuestaController extends Controller
                     $no_pobres[] = $c;
                 }
             }
-            echo "Pobreza nivel Hogar: Pobres ".sizeof($pobres)."/".sizeof($completos)."No Pobres ".sizeof($no_pobres)."/".sizeof($completos);
+
+            $hpo = round(sizeof($pobres)*100/sizeof($completos));
+            $hnpo = round(sizeof($no_pobres)*100/sizeof($completos));
+
+            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($completos)." ($hpo%)".
+            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($completos)." ($hnpo%)";
 
 
 
@@ -141,8 +156,12 @@ class EncuestaController extends Controller
                     }
                 }
             }
-            echo "</br>";
-            echo "Pobreza nivel Individuo: Pobres $p/$t No Pobres $np/$t";
+            echo "<p>";
+              $pp = round((($p)*100)/($t));
+
+              $npp = round(($np)*100/($t));
+            echo "Pobreza nivel Individuo:</br>Pobres: $p/$t ($pp%) </br> No Pobres: $np/$t ($npp%)";
+            echo "</p>";
 
 
 

@@ -163,7 +163,8 @@ class encuesta extends Model
     }
 
 
-    public function fueSuper(){
+    public function fueSuper()
+    {
         foreach ($this->componentes as $individual)
         {
             if($individual->fueSuper())

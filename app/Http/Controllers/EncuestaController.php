@@ -55,8 +55,8 @@ class EncuestaController extends Controller
 
             //EFECTIVOS y //NO EFECTIVOS
 
-            $efectivos = [];
-            $no_efectivos = [];
+                                                                                $efectivos = [];
+                                                                                $no_efectivos = [];
 
             foreach ($encuestas as $e)
             {
@@ -75,8 +75,8 @@ class EncuestaController extends Controller
 
             //COMPLETOS
 
-            $completos = [];
-            $incompletos = [];
+                                                                                $completos = [];
+                                                                                $incompletos = [];
 
             //INCOMPLETOS & FALTA MONTOS
             foreach ($efectivos as $e)
@@ -97,15 +97,49 @@ class EncuestaController extends Controller
             echo "Incompletos: ".sizeof($incompletos)."</br>";
 
             //POBRES nivel hogar
+                                                                                $pobres = [];
+                                                                                $no_pobres = [];
+
+            foreach ($completos as $c)
+            {
+                if($e->esPobre())
+                {
+                    $pobres[] = $e;
+                }
+                else
+                {
+                    $no_pobres[] = $e;
+                }
+            }
+            echo "Pobreza nivel Hogar: Pobres ".sizeof($pobres)." No Pobres ".sizeof($no_pobres);
 
 
 
-            //NO POBRES
 
 
             //POBREZA INDIVIDUAL
+            $t = 0;
+            $p = 0;
+            $np = 0;
+            foreach ($completos as $c)
+            {
+                foreach ($c->componentes as $i)
+                {
+                    $t++;
+                    if($i->esPobre())
+                    {
+                        $p++;
+                    }
+                    else
+                    {
+                        $np++;
+                    }
+                }
+            }
+            echo "</br>";
+            echo "Pobreza nivel Individuo: Pobres ".$p." No Pobres ".$np;
 
-                // $encuestas,$efectivas,$no-efectivas
+
 
 
 

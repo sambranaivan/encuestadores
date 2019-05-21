@@ -71,14 +71,18 @@
                                            @endif
                                     </td>
                                     @if($item->fueSuper())
-                                    <td class="bg-success text-white">
-                                    <a name="" id="" class="btn btn-primary btn-sm btn-success" href="#" role="button">Super</a>
-                                    </td>
-                                        @else
+                                        <td class="bg-success text-white">
+                                        <a name="" id="" class="btn btn-primary btn-sm btn-success" href="#" role="button">Super</a>
+                                        </td>
+                                    @elseif($item->hasCambios())
                                     <td>
 
                                     </td>
-                                        @endif
+                                    @else
+                                    <td>
+
+                                    </td>
+                                    @endif
                                 <td>
 
 

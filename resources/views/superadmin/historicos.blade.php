@@ -37,9 +37,17 @@
                                 <td>
                                     @if($item->fueSuper())
                                 <a name="" id="" class="btn btn-primary" href="{{route('historicoIndividual',['id'=>$item->id])}}" role="button">
-                                            Ver Modificaciones
+                                            Ver Modificaciones(s)
                                         </a>
-                                    @endif
+                                        @elseif($item->hasCambios())
+                                    <td>
+                                        <a name="" id="" class="btn btn-primary btn-sm btn-primary" href="{{route('historicoIndividual',['id'=>$item->id])}}" role="button">Ver Modificaciones</a>
+                                    </td>
+                                    @else
+                                    <td>
+
+                                    </td>
+                                        @endif
                                 </td>
                             </tr>
                             @endforeach

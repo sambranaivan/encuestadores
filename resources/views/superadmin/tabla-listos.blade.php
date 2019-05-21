@@ -74,7 +74,11 @@
                                     <td>
                                     <a name="" id="" class="btn btn-primary btn-sm btn-success" href="{{route('historico',['id'=>$item->id])}}" role="button">Super</a>
                                     </td>
-                                        @else
+                                        @elseif($item->hasCambios())
+                                    <td>
+                                        <a name="" id="" class="btn btn-primary btn-sm btn-primary" href="{{route('historico',['id'=>$item->id])}}" role="button">Tiene Cambios</a>
+                                    </td>
+                                    @else
                                     <td>
 
                                     </td>

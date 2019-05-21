@@ -69,10 +69,9 @@ class encuesta extends Model
             {
                 return true;
             }
-            else {
-
-            return false;
-
+            else
+            {
+                return false;
             }
         }
         else
@@ -127,6 +126,8 @@ class encuesta extends Model
         return $m;
     }
 
+
+
     public function getPonds()
     {
         $p = 0;
@@ -176,8 +177,21 @@ class encuesta extends Model
 
     //
 
-    public function cambios(){
+    public function cambios()
+    {
         return $this->hasMany('App\historico_e');
+    }
+
+    public function hasCambios()
+    {
+        foreach ($this->componentes as $individual)
+        {
+            if($individual->hasCambios())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function ingreso_individual()

@@ -99,12 +99,15 @@ class EncuestaController extends Controller
             //POBRES nivel hogar
 
 
+
             //NO POBRES
 
 
             //POBREZA INDIVIDUAL
 
-            // $encuestas,$efectivas,$no-efectivas
+                // $encuestas,$efectivas,$no-efectivas
+
+
 
 
 

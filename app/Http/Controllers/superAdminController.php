@@ -29,7 +29,7 @@ class superAdminController extends Controller
 
         $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
-
+        echo $e->count();
         $detalles = array(
             'totales'=>0,
             'pobres'=>0,
@@ -41,25 +41,22 @@ class superAdminController extends Controller
         {
            if(!$encuesta->isHistorico())
            {
-                $detalles['totales']++;
+            $detalles['totales']++;
             if($encuesta->estado())
             {
                 $detalles['completos']++;
                 if($encuesta->esPobre())
                 {
                     $detalles['pobres']++;
-
                 }
                 else
                 {
                     $detalles['no-pobres']++;
-
                 }
             }
             else
             {
                 $detalles['incompletos']++;
-
             }
            }
         }

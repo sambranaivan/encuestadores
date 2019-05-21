@@ -209,7 +209,8 @@ class individual extends Model
     }
 
 
-    public function fueSuper(){
+    public function fueSuper()
+    {
         if(is_null($this->super))
         {
             return false;
@@ -217,6 +218,17 @@ class individual extends Model
         else
         {
             return true;
+        }
+    }
+
+    public function hasCambios(){
+        if($this->historico->count())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

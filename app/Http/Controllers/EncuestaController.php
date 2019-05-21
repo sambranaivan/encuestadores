@@ -70,8 +70,8 @@ class EncuestaController extends Controller
                 }
             }
 
-            echo "Efectivas: ".sizeof($efectivos)."</br>";
-            echo "No Efectivas: ".sizeof($no_efectivos)."</br>";
+            echo "Efectivas: ".sizeof($efectivos)."/".$encuestas->count()."</br>";
+            echo "No Efectivas: ".sizeof($no_efectivos)."/".$encuestas->count()."</br>";
 
             //COMPLETOS
 
@@ -93,8 +93,8 @@ class EncuestaController extends Controller
                     $incompletos[] = $e;
                 }
             }
-            echo "Completos: ".sizeof($completos)."</br>";
-            echo "Incompletos: ".sizeof($incompletos)."</br>";
+            echo "Completos: ".sizeof($completos)."/".sizeof($efectivos)."</br>";
+            echo "Incompletos: ".sizeof($incompletos)."/".sizeof($efectivos)."</br>";
 
             //POBRES nivel hogar
                                                                                 $pobres = [];
@@ -102,16 +102,16 @@ class EncuestaController extends Controller
 
             foreach ($completos as $c)
             {
-                if($e->esPobre())
+                if($c->esPobre() == true)
                 {
-                    $pobres[] = $e;
+                    $pobres[] = $c;
                 }
                 else
                 {
-                    $no_pobres[] = $e;
+                    $no_pobres[] = $c;
                 }
             }
-            echo "Pobreza nivel Hogar: Pobres ".sizeof($pobres)." No Pobres ".sizeof($no_pobres);
+            echo "Pobreza nivel Hogar: Pobres ".sizeof($pobres)."/".sizeof($completos)."No Pobres ".sizeof($no_pobres)."/".sizeof($completos);
 
 
 
@@ -137,7 +137,7 @@ class EncuestaController extends Controller
                 }
             }
             echo "</br>";
-            echo "Pobreza nivel Individuo: Pobres ".$p." No Pobres ".$np;
+            echo "Pobreza nivel Individuo: Pobres $p/$t No Pobres $np/$t";
 
 
 

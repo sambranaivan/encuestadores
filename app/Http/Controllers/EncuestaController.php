@@ -107,7 +107,7 @@ class EncuestaController extends Controller
 
             foreach ($completos as $c)
             {
-                if($c->esPobre() == true)
+                if($c->esPobre() == false)
                 {
                     $pobres[] = $c;
                 }

@@ -42,6 +42,9 @@
                         <li class="list-group-item"><strong>Comentarios Dirección: </strong>{{$encuesta->comentario_admin}}</li>
                     </ul>
                     {{-- detalle componentes --}}
+                     @if($encuesta->componentes->count() != $encuesta->cantidad)
+                        <a name="" id="" class="btn btn-warning" href="/supervisor/individual/{{$encuesta->id}}" role="button">Cargar Componentes</a>
+                    @endif
                     @if($encuesta->componentes->count())
                     <h4>Componentes del Hogar</h4>
                     <table class="table table-sm table-striped">
@@ -71,6 +74,7 @@
                                     </td>
                                      <td>
                                 <a class="btn btn-primary btn-sm" href="{{route('AdminEditarIndividual',['id'=>$item->id])}}" role="button">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="{{route('AdminBorrarIndividual',['id'=>$item->id])}}" role="button">Borrar</a>
                                 </td>
                                </tr>
                                @endforeach

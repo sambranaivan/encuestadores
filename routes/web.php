@@ -99,6 +99,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/superadmin/individual/editar/{id}','superAdminController@editIndividual')->name('AdminEditarIndividual');
     Route::post('/superadmin/individual/update','superAdminController@updateIndividual')->name('AdminupdateIndividual');
+    Route::get('/superadmin/individual/{id}','superAdminController@showIndividual')->name("superAdmincargarcomponentes");
+    Route::post('/superadmin/individual/savenew','superAdminController@saveIndividual')->name("supervisorSaveIndividual");
+    Route::get('/superadmin/individual/delete/{id}','superAdminController@deleteIndividual')->name('AdminBorrarIndividual');
     /**
      * Super Admin
      */

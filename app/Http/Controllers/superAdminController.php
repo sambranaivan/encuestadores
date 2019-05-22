@@ -21,6 +21,15 @@ class superAdminController extends Controller
         return view('superadmin.detalleEncuesta')->with('encuesta',$e);
     }
 
+    public function deleteIndividual($id)
+    {
+        $i = individual::find($id)    ;
+        $e = $i->encuesta_id;
+        $i->delete();
+
+        return redirect('/admin/encuesta/'.$e);
+    }
+
 
     public function home(){
         // solo la de ESTE cuatrimestre
@@ -229,5 +238,32 @@ class superAdminController extends Controller
 
 
                 return redirect('/admin/encuesta/'.$individual->encuesta->id);
+    }
+
+    public function showIndividual($id)
+    {
+        $e = encuesta::find($id);
+
+        return view('superadmin.individual')->with('encuesta',$e);
+    }
+
+      public function saveIndividual(request $request)
+    {
+
+        $e = encuesta::find($request->encuesta_id);
+        for ($i=1; $i <= $e->cantidad ; $i++)
+        {
+
+            $individual = new individual();
+            $individual->user_id = Auth::user()->id;
+            $individual->encuesta_id = $e->id;
+            $individual->sexo = $request['sexo_'.$i];
+            $individual->edad = $request['edad_'.$i];
+            $individual->laboral = $request['laboral_'.$i];
+            $individual->ingreso_laboral = $request['ingreso_laboral_'.$i];
+            $individual->ingreso_no_laboral = $request['ingreso_no_laboral_'.$i];
+            $individual->save();
+        }
+          return redirect('/admin/encuesta/'.$e->id);
     }
 }

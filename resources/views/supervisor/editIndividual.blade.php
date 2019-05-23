@@ -49,6 +49,7 @@ $(document).ready(function(){
                                             <option value="">-</option>
                                             <option value="Trabaja">Trabaja</option>
                                             <option value="No Trabaja">No Trabaja</option>
+                                            <option value="No Responde">No Responde</option>
                                             {{-- <option value="No Trabaja y Busca">No Trabaja y Busca</option>
                                             <option value="No Trabaja y No Busca">No Trabaja y No Busca</option> --}}
                                         </select>

@@ -127,11 +127,11 @@ class EncuestaController extends Controller
                 }
             }
 
-            $hpo = round(sizeof($pobres)*100/sizeof($completos));
-            $hnpo = round(sizeof($no_pobres)*100/sizeof($completos));
+            $hpo = round(sizeof($pobres)*100/sizeof($efectivos));
+            $hnpo = round(sizeof($no_pobres)*100/sizeof($efectivos));
 
-            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($completos)." ($hpo%)".
-            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($completos)." ($hnpo%)";
+            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($efectivos)." ($hpo%)".
+            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($efectivos)." ($hnpo%)";
 
 
 
@@ -156,6 +156,7 @@ class EncuestaController extends Controller
                     }
                 }
             }
+            $t = sizeOf($efectivos);
             echo "<p>";
               $pp = round((($p)*100)/($t));
 

@@ -63,8 +63,10 @@ class EncuestaController extends Controller
                                                                                 $efectivos = [];
                                                                                 $no_efectivos = [];
 
+            $i = 0;
             foreach ($filtrado as $e)
             {
+                $i += $e->componentes()->count();
                 if($e->efectivo)
                 {
                     $efectivos[] = $e;
@@ -74,6 +76,7 @@ class EncuestaController extends Controller
                     $no_efectivos[] = $e;
                 }
             }
+
 
             echo "<p>Efectivas: ".sizeof($efectivos)."/".sizeof($filtrado);
             $p = round(sizeof($efectivos)*100/sizeof($filtrado));
@@ -165,7 +168,9 @@ class EncuestaController extends Controller
 
               $npp = round(($np)*100/($t));
             echo "Pobreza nivel Individuo:</br>Pobres: $p/$t ($pp%) </br> No Pobres: $np/$t ($npp%)";
-            echo "</p>";
+                echo "</p>";
+
+                echo "<p>Total Individuales: $i</p>";
 
 
 

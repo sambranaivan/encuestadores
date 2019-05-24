@@ -115,6 +115,10 @@ class EncuestaController extends Controller
                                                                                 $pobres = [];
                                                                                 $no_pobres = [];
 
+
+
+            // Hardord
+            $completos = $efectivos;
             foreach ($completos as $c)
             {
                 if($c->esPobre() == false)
@@ -127,11 +131,11 @@ class EncuestaController extends Controller
                 }
             }
 
-            $hpo = round(sizeof($pobres)*100/sizeof($efectivos));
-            $hnpo = round(sizeof($no_pobres)*100/sizeof($efectivos));
+            $hpo = round(sizeof($pobres)*100/sizeof($completos));
+            $hnpo = round(sizeof($no_pobres)*100/sizeof($completos));
 
-            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($efectivos)." ($hpo%)".
-            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($efectivos)." ($hnpo%)";
+            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($completos)." ($hpo%)".
+            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($completos)." ($hnpo%)";
 
 
 
@@ -156,7 +160,6 @@ class EncuestaController extends Controller
                     }
                 }
             }
-            $t = sizeOf($efectivos);
             echo "<p>";
               $pp = round((($p)*100)/($t));
 

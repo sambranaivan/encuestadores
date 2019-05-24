@@ -63,10 +63,11 @@ class EncuestaController extends Controller
                                                                                 $efectivos = [];
                                                                                 $no_efectivos = [];
 
-            $i = 0;
+            $indi = 0;
             foreach ($filtrado as $e)
             {
-                $i += $e->componentes()->count();
+                $e = encuesta::find($e->id);
+                $indi += $e->componentes->count();
                 if($e->efectivo)
                 {
                     $efectivos[] = $e;
@@ -170,7 +171,7 @@ class EncuestaController extends Controller
             echo "Pobreza nivel Individuo:</br>Pobres: $p/$t ($pp%) </br> No Pobres: $np/$t ($npp%)";
                 echo "</p>";
 
-                echo "<p>Total Individuales: $i</p>";
+                echo "<p>Total Individuales: $indi</p>";
 
 
 

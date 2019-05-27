@@ -5,6 +5,7 @@ use App\area;
 use App\encuesta;
 use App\individual;
 use App\pase;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class encuestadorController extends Controller
         return view('encuestador.areas')->with('areas',$areas);
     }
     public function nuevaArea(){
-        return view('encuestador.nuevaArea');
+        $e = User::where('role',0)->get();
+        return view('encuestador.nuevaArea')->with('encuestadores',$e);
     }
     public function nuevaEncuesta(request $request){
         $area = area::find($request->area_id);
@@ -32,6 +34,7 @@ class encuestadorController extends Controller
         $a->trimestre = $request->trimestre;
         $a->visita = $request->visita;
         $a->user_id = Auth::user()->id;
+        $a->encuestador_id = $request->encuestador_id;
         $a->save();
 
         return redirect()->route('homeEncuestadores');

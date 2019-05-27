@@ -11,6 +11,21 @@
                 <form class="form" method="POST" action="{{route('saveArea')}}">
                        @csrf
                        <div class="row">
+                           <div class="col-md-6">
+
+
+                           <div class="form-group">
+                               <label for="">Encuestador que realizo la encuesta</label>
+                        <select name="encuestador_id" id="" class="form-control" required>
+                            <option value="">-</option>
+                            @foreach ($encuestadores as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                           </div>
+                           </div>
+                       </div>
+                       <div class="row">
                            <div class="col-md-4">
 
                                <div class="form-group">

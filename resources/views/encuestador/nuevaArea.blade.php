@@ -23,7 +23,7 @@
                            <div class="col-md-4"><div class="form-group">
                          <label for="">Año</label>
                          <input type="number" name="anio"
-                           class="form-control" min="0" step=1 max=2019 value="2019" id="" aria-describedby="helpId" placeholder="" required>
+                           class="form-control" min="0" step=1 max=2019 value="" id="" aria-describedby="helpId" placeholder="" required>
 
                        </div></div>
                        <div class="col-md-4">

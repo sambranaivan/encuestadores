@@ -113,6 +113,7 @@ Route::middleware('auth')->group(function () {
 
 // AJAX
 Route::get("/superadmin/indicadores/{anio}/{trimestre}",'EncuestaController@indicadores')->name('indicadores');
+Route::get("/superadmin/indicadores/",'EncuestaController@indicadores')->name('indicadores');
 
 route::get('ajax/encuesta/listo/{id}','EncuestaController@listo');
 route::get('ajax/encuesta/listo/','EncuestaController@listo')->name('ajaxListo');;

@@ -40,10 +40,14 @@ class EncuestaController extends Controller
 
     }
 
-    public function indicadores($anio,$trimestre){
+    public function indicadores(){
+       return view('superadmin.indicadores')
+       ->with('a2018t4',$this->getTrimestre(2018,4))
+       ->with('a2019t1',$this->getTrimestre(2019,1))
+       ->with('a2019t2',$this->getTrimestre(2019,2));
+    }
 
-            //   $encuestas = encuesta::where('efectivo',1)->get();//me traigo todas las encuestas
-
+    public function getTrimestre($anio,$trimestre){
 
             $encuestas = encuesta::all();
 
@@ -56,7 +60,6 @@ class EncuestaController extends Controller
                 }
             }
 
-            echo "Totales: ".sizeof($filtrado)."</br>";
 
             //EFECTIVOS y //NO EFECTIVOS
 
@@ -79,13 +82,9 @@ class EncuestaController extends Controller
             }
 
 
-            echo "<p>Efectivas: ".sizeof($efectivos)."/".sizeof($filtrado);
             $p = round(sizeof($efectivos)*100/sizeof($filtrado));
-            echo " ($p%)</br>";
 
-            echo "No Efectivas: ".sizeof($no_efectivos)."/".sizeof($filtrado);
             $p = round(sizeof($no_efectivos)*100/sizeof($filtrado));
-            echo " ($p%)</br></p>";
 
 
             //COMPLETOS
@@ -108,12 +107,10 @@ class EncuestaController extends Controller
                     $incompletos[] = $e;
                 }
             }
-            echo "<p>Completos: ".sizeof($completos)."/".sizeof($efectivos);
             $p = round(sizeof($completos)*100/sizeof($efectivos));
-              echo " ($p%)</br>";
-            echo "Incompletos: ".sizeof($incompletos)."/".sizeof($efectivos);
+            //   echo " ($p%)</br>";
             $p = round(sizeof($incompletos)*100/sizeof($efectivos));
-              echo " ($p%)</br></p>";
+            //   echo " ($p%)</br></p>";
 
             //POBRES nivel hogar
                                                                                 $pobres = [];
@@ -122,6 +119,7 @@ class EncuestaController extends Controller
 
 
             // Hardord
+            $_c = $completos;
             $completos = $efectivos;
             foreach ($completos as $c)
             {
@@ -137,12 +135,6 @@ class EncuestaController extends Controller
 
             $hpo = round(sizeof($pobres)*100/sizeof($completos));
             $hnpo = round(sizeof($no_pobres)*100/sizeof($completos));
-
-            echo "Pobreza nivel Hogar:</br>Pobres: ".sizeof($pobres)."/".sizeof($completos)." ($hpo%)".
-            " </br> No Pobres: ".sizeof($no_pobres)."/".sizeof($completos)." ($hnpo%)";
-
-
-
 
 
             //POBREZA INDIVIDUAL
@@ -164,21 +156,52 @@ class EncuestaController extends Controller
                     }
                 }
             }
-            echo "<p>";
               $pp = round((($p)*100)/($t));
 
               $npp = round(($np)*100/($t));
-            echo "Pobreza nivel Individuo:</br>Pobres: $p/$t ($pp%) </br> No Pobres: $np/$t ($npp%)";
-                echo "</p>";
-
-                echo "<p>Total Individuales: $indi</p>";
 
 
 
 
 
 
+            // return view('superadmin/indicadores',[
+            //     'anio'=>$anio,
+            //     'trimestre'=>$trimestre,
+            //     "totales"=>sizeof($filtrado),
+            //     "totalesi"=>$t,
+            //     "efectivas"=>sizeof($efectivos),
+            //     "noefectivas"=>sizeof($no_efectivos),
+
+            //     "completos"=>sizeof($_c),
+            //     "incompletos"=>sizeof($incompletos),
+
+            //     "pobre" => sizeof($pobres),
+            //     "nopobre" => sizeof($no_pobres),
+
+
+            //     "individualpobre" => sizeof($p),
+            //     "individualnopobre" => sizeof($np)
+            // ]);
+
+            return ['anio'=>$anio,
+                'trimestre'=>$trimestre,
+                "totales"=>sizeof($filtrado),
+                "totalesi"=>$t,
+                "efectivas"=>sizeof($efectivos),
+                "noefectivas"=>sizeof($no_efectivos),
+
+                "completos"=>sizeof($_c),
+                "incompletos"=>sizeof($incompletos),
+
+                "pobre" => sizeof($pobres),
+                "nopobre" => sizeof($no_pobres),
+
+
+                "individualpobre" => sizeof($p),
+                "individualnopobre" => sizeof($np)];
 
     }
 
 }
+

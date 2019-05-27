@@ -198,8 +198,8 @@ class EncuestaController extends Controller
                 "nopobre" => sizeof($no_pobres),
 
 
-                "individualpobre" => sizeof($p),
-                "individualnopobre" => sizeof($np)];
+                "individualpobre" => ($p),
+                "individualnopobre" => ($np)];
 
     }
 

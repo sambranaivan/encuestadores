@@ -43,35 +43,35 @@
                         </td>
                         <td >
                             {{$info['efectivas']}}/{{$info['totales']}}
-                        </br>({{round($info['efectivas']*100/$info['totales'],2)}}%)
+                        </br>({{round($info['efectivas']*100/$info['totales'])}}%)
                         </td>
                         <td >
                             {{$info['noefectivas']}}/{{$info['totales']}}
-                        </br>({{round($info['noefectivas']*100/$info['totales'],2)}}%)
+                        </br>({{round($info['noefectivas']*100/$info['totales'])}}%)
                         </td>
                         <td >
                             {{$info['completos']}}/{{$info['efectivas']}}
-                        </br>({{round($info['completos']*100/$info['efectivas'],2)}}%)
+                        </br>({{round($info['completos']*100/$info['efectivas'])}}%)
                         </td>
                         <td >
                             {{$info['incompletos']}}/{{$info['efectivas']}}
-                        </br>({{round($info['incompletos']*100/$info['efectivas'],2)}}%)
+                        </br>({{round($info['incompletos']*100/$info['efectivas'])}}%)
                         </td>
                          <td >
                             {{$info['pobre']}}/{{$info['efectivas']}}
-                         </br>({{round($info['pobre']*100/$info['efectivas'],2)}}%)
+                         </br>({{round($info['pobre']*100/$info['efectivas'])}}%)
                         </td>
                         <td >
                             {{$info['nopobre']}}/{{$info['efectivas']}}
-                        </br>({{round($info['nopobre']*100/$info['efectivas'],2)}}%)
+                        </br>({{round($info['nopobre']*100/$info['efectivas'])}}%)
                         </td>
                           <td >
                             {{$info['individualpobre']}}/{{$info['totalesi']}}
-                          </br>({{round($info['individualpobre']*100/$info['totalesi'],2)}}%)
+                          </br>({{round($info['individualpobre']*100/$info['totalesi'])}}%)
                         </td>
                         <td >
                             {{$info['individualnopobre']}}/{{$info['totalesi']}}
-                        </br>({{round($info['individualnopobre']*100/$info['totalesi'],2)}}%)
+                        </br>({{round($info['individualnopobre']*100/$info['totalesi'])}}%)
                         </td>
                          <td >
                             {{$info['totalesi']}}

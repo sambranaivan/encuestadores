@@ -130,6 +130,27 @@ class SupervisorController extends Controller
                 case "otros":
                 $e->detalle_no_efectiva = $request->no_efectiva_otros;
                 break;
+                //
+                case "deshabitada":
+                $e->detalle_no_efectiva = $request->no_efectiva_deshabitada;
+                break;
+                case "demolida":
+                $e->detalle_no_efectiva = $request->no_efectiva_demolida;
+                break;
+                case "fin_de_semana":
+                $e->detalle_no_efectiva = $request->no_efectiva_finde;
+                break;
+                case "construccion":
+                $e->detalle_no_efectiva = $request->no_efectiva_construccion;
+                break;
+                case "establecimiento":
+                $e->detalle_no_efectiva = $request->no_efectiva_establecimiento;
+                break;
+                case "variacion_listado":
+                $e->detalle_no_efectiva = $request->no_efectiva_listado;
+                break;
+
+                //
             }
         }
         $e->comentario_supervisor = $request->comentarios;

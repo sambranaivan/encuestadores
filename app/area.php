@@ -16,7 +16,7 @@ class area extends Model
     }
 
     public function isHistorico(){
-        if($this->anio == 2019 && $this->trimestre == 1)
+        if(($this->anio == 2019 && $this->trimestre == 1) || ($this->anio == 2018) )
         {
             return true;
         }

@@ -158,7 +158,7 @@ class superAdminController extends Controller
         else {
             $e->efectivo = false;
             $e->tipo_no_efectiva = $request->tipo_no_efectiva;
-            switch($request->tipo_no_efectiva)
+           switch($request->tipo_no_efectiva)
             {
                 case "ausente":
                     $e->detalle_no_efectiva = $request->no_efectiva_ausente;
@@ -169,6 +169,27 @@ class superAdminController extends Controller
                 case "otros":
                 $e->detalle_no_efectiva = $request->no_efectiva_otros;
                 break;
+                //
+                case "deshabitada":
+                $e->detalle_no_efectiva = $request->no_efectiva_deshabitada;
+                break;
+                case "demolida":
+                $e->detalle_no_efectiva = $request->no_efectiva_demolida;
+                break;
+                case "fin_de_semana":
+                $e->detalle_no_efectiva = $request->no_efectiva_finde;
+                break;
+                case "construccion":
+                $e->detalle_no_efectiva = $request->no_efectiva_construccion;
+                break;
+                case "establecimiento":
+                $e->detalle_no_efectiva = $request->no_efectiva_establecimiento;
+                break;
+                case "variacion_listado":
+                $e->detalle_no_efectiva = $request->no_efectiva_listado;
+                break;
+
+                //
             }
         }
         $e->comentario_admin = $request->comentarios;

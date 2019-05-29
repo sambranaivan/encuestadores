@@ -85,9 +85,7 @@ $(document).ready(function(){
                     <h3>Detalle de Hogares</h3>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#finalizado" role="tab" aria-controls="home" aria-selected="true">Finalizado</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#finalizado" role="tab" aria-controls="home" aria-selected="true">Finalizado</a></li>
                         <li class="nav-item"><a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a></li>
                         <li class="nav-item"><a class="nav-link" id="cargando-tab" data-toggle="tab" href="#cargando" role="tab" aria-controls="cargando" aria-selected="false">Cargando</a></li>
                         <li class="nav-item"><a class="nav-link" id="entregado-tab" data-toggle="tab" href="#entregado" role="tab" aria-controls="entregado" aria-selected="false">Entregados</a></li>
@@ -100,7 +98,7 @@ $(document).ready(function(){
                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'finalizado'])
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        @include('superadmin.tabla-supervisor',['efectivos'=>$efectivos])
+                        @include('superadmin.tabla-supervisor',['efectivos'=>$efectivos,'flag'=>'en supervision'])
                     </div>
                     <div class="tab-pane fade" id="cargando" role="tabpanel" aria-labelledby="cargando-tab">
                         @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'cargando'])

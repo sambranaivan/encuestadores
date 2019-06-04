@@ -54,10 +54,16 @@
                                     </td>
                                     <td>
                                         @if($item->esSuper())
-                                            Super-Super
+                                            Super Super
+
                                         @else
-                                            Corregido por Supervisor</br>
+
+                                            Corregido por</br>
                                             <strong>{{$item->who->name}}</strong>
+                                    </br>
+                                    @if(Auth::user()->name = "ivan")
+                                                <a name="" id="" class="btn btn-primary" href="{{route('hyper',['historico_id'=>$item->id])}}" role="button">Marcar como Super</a>
+                                            @endif
                                         @endif
                                     </td>
 

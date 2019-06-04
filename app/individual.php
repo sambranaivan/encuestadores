@@ -211,14 +211,17 @@ class individual extends Model
 
     public function fueSuper()
     {
-        if(is_null($this->super))
+        $h = $this->historico;
+
+
+        foreach ($h as $histo)
         {
-            return false;
+            if($histo->esSuper()){
+                return true;
+            }
         }
-        else
-        {
-            return true;
-        }
+
+        return false;
     }
 
     public function hasCambios(){

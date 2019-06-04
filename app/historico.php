@@ -8,7 +8,7 @@ class historico extends Model
 {
     //
     public function esSuper(){
-        if($this->comentario == "")
+        if($this->super !== null)
         {
            return true;
         }

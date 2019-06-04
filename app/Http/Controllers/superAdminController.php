@@ -232,7 +232,7 @@ class superAdminController extends Controller
             if( $request['super'] == 'on')
             {
 
-                $individual->super = Auth::user()->name;
+                $individual->super = 'super-super';
             }
             $individual->save();
 

@@ -56,8 +56,8 @@
                                         @if($item->esSuper())
                                             Super-Super
                                         @else
-                                            Corregido por Supervisor
-                                            {{$item->who->name}}
+                                            Corregido por Supervisor</br>
+                                            <strong>{{$item->who->name}}</strong>
                                         @endif
                                     </td>
 

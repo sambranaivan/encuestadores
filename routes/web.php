@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
      * Administrador
      */
     Route::get('/superadmin/home','superAdminController@home')->name('homeSuperAdmin');
+    Route::get('superadmin/home/{id}','superAdminController@inicio');
     Route::get('/admin/encuesta/{id}',"superAdminController@verEncuesta")->name("superVerEncuesta");
 
 
@@ -106,13 +107,12 @@ Route::middleware('auth')->group(function () {
      * Super Admin
      */
     Route::get('/superadmin/historico/{id}','EncuestaController@historico')->name('historico');
-
     Route::get('/superadmin/historico/individual/{id}','EncuestaController@modificaciones')->name('historicoIndividual');
 
 });
 
 // AJAX
-Route::get("/superadmin/indicadores/{anio}/{trimestre}",'EncuestaController@indicadores')->name('indicadores');
+// Route::get("/superadmin/indicadores/{anio}/{trimestre}",'EncuestaController@indicadores')->name('indicadores');
 Route::get("/superadmin/indicadores/",'EncuestaController@indicadores')->name('indicadores');
 
 route::get('ajax/encuesta/listo/{id}','EncuestaController@listo');

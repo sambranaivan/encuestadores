@@ -20,7 +20,16 @@ $(document).ready(function(){
         })
 
       })
+
+
+
+
 })
+
+function mostrando(t)
+{
+    window.location = "{{route('homeSuperAdmin')}}"+"/"+t.value;
+}
 </script>
 <div class="container-fluid">
 
@@ -33,65 +42,37 @@ $(document).ready(function(){
                         <h4 class="card-title">Panel de Administración</h4>
 
                     </div>
-                  {{-- <div class="card-body">
-                   <h3>Resumen de Carga</h3>
-                   <table class="table table-sm table-stripped table-dark">
-                       <thead>
-                           <tr>
-                               <th>Areas en Carga</th>
-                               <th>Areas en Coordinación</th>
-                               <th>Areas en Supervición</th>
-                               <th>Areas en Dirección</th>
-                               <th>Areas Autorizadas</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           <tr>
-                               <td scope="row">{{$counts['cargando']}}</td>
-                               <td scope="row">{{$counts['recibido'] + $counts['entregado']}}</td>
-                               <td scope="row">{{$counts['en supervision']}}</td>
-                               <td scope="row">{{$counts['en direccion']}}</td>
-                               <td scope="row">{{$counts['con autorizacion']}}</td>
-                           </tr>
-                       </tbody>
-                   </table>
-                  </div> --}}
+
                   <div class="card-body">
                         <h3>Cálculo de estimación de pobreza</h3>
-                        <table class="table table-sm table-stripped table-dark">
-                            <thead>
-                                <tr>
-                                    <th>Total de Hogares</th>
-                                    <th>Pobres</th>
-                                    <th>No Pobres</th>
-                                    <th>Incompletos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{$detalles['totales']}}</td>
-                                    <td>{{$detalles['pobres']}}</td>
-                                    <td>{{$detalles['no-pobres']}}</td>
-                                    <td>{{$detalles['incompletos']}}</td>
-                                </tr>
-                               <tr>
-                                    <th>Porcentajes</th>
-                                    <td>{{ceil($detalles['pobres']/$detalles['completos']*100)}}%</td>
-                                    <td>{{ceil($detalles['no-pobres']/$detalles['completos']*100)}}%</td>
-                                    <td>{{ceil($detalles['incompletos']/$detalles['totales']*100)}}%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-md-4">
+                                Mostrando
+                            </div>
+                            <div class="col-md-4">
+
+                        <select name="trimestr" id="mostrando" class="form-control" onchange="mostrando(this)">
+                            <option value="1" @if($selected == 1 ) selected @endif>2° Trimestre Año 2019</option>
+                            <option value="2" @if($selected == 2 ) selected @endif>1° Trimestre Año 2019</option>
+                            <option value="3" @if($selected == 3 ) selected @endif>4° Trimestre Año 2018</option>
+                        </select>
+                            </div>
+                            <div class="col-md-2">
+                                <a name="" id="" class="btn btn-primary" href="{{route('indicadores')}}" role="button">Ver Indicadores por Trimestre</a>
+                            </div>
+                        </div>
+                           @include('superadmin.tablaIndicadores',['info'=>$indicadores])
                     <h3>Detalle de Hogares</h3>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#finalizado" role="tab" aria-controls="home" aria-selected="true">Finalizado</a></li>
-                        <li class="nav-item"><a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a></li>
+
                         <li class="nav-item"><a class="nav-link" id="cargando-tab" data-toggle="tab" href="#cargando" role="tab" aria-controls="cargando" aria-selected="false">Cargando</a></li>
                         <li class="nav-item"><a class="nav-link" id="entregado-tab" data-toggle="tab" href="#entregado" role="tab" aria-controls="entregado" aria-selected="false">Entregados</a></li>
                         <li class="nav-item"><a class="nav-link" id="coord-tab" data-toggle="tab" href="#coord" role="tab" aria-controls="coord" aria-selected="false">En Coordinacion</a></li>
                         <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">En supervisión</a></li>
-                        <li class="nav-item"><a class="nav-link" id="histo-tab" data-toggle="tab" href="#histo" role="tab" aria-controls="histo" aria-selected="false">Cargado en INDEC</a></li>
+                        <li class="nav-item"><a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a></li>
+                        {{-- <li class="nav-item"><a class="nav-link" id="histo-tab" data-toggle="tab" href="#histo" role="tab" aria-controls="histo" aria-selected="false">Cargado en INDEC</a></li> --}}
                     </ul>
                     <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="finalizado" role="tabpanel" aria-labelledby="home-tab">
@@ -108,10 +89,10 @@ $(document).ready(function(){
                           @include('superadmin.tabla-listos',['efectivos'=>$efectivos])
                     </div>
 
-                    <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
-                        {{-- Historicos --}}
+                    {{-- <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
+
                         @include('superadmin.tabla-historico',['efectivos'=>$efectivos])
-                    </div>
+                    </div> --}}
                     <div class="tab-pane fade" id="entregado" role="tabpanel" aria-labelledby="profile-tab">
                         {{-- Entregado --}}
                          @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'entregado'])

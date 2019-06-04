@@ -32,69 +32,48 @@ class superAdminController extends Controller
 
 
     public function home(){
-        // solo la de ESTE cuatrimestre
-        $areas = area::all()->sortByDesc('area');
+
+        return $this->inicio(1);
+
+
+
+
+
+    }
+
+    public function inicio($selected){
+        $anio;
+        $t;
+        switch ($selected) {
+            case 1:
+                $anio = 2019;
+                $t = 2;
+                break;
+                 case 2:
+                $anio = 2019;
+                $t = 1;
+                break;
+                 case 3:
+                $anio = 2018;
+                $t = 1;
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $areas = area::where('anio',$anio)->where('trimestre',$t)->get()->sortByDesc('area');
+
+        $indicadores = app('App\Http\Controllers\EncuestaController')->getTrimestre($anio,$t);
 
 
         $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
-        echo $e->count();
-        $detalles = array(
-            'totales'=>0,
-            'pobres'=>0,
-            'no-pobres'=>0,
-            'completos'=>0,
-            'incompletos'=>0,
-        );
-        foreach ($e as $encuesta)
-        {
-           if(!$encuesta->isHistorico())
-           {
-            $detalles['totales']++;
-            if($encuesta->estado())
-            {
-                $detalles['completos']++;
-                if(!$encuesta->esPobre())
-                {
-                    $detalles['pobres']++;
-                }
-                else
-                {
-                    $detalles['no-pobres']++;
-                }
-            }
-            else
-            {
-                $detalles['incompletos']++;
-            }
-           }
-        }
-
-        $historicos = [];
-        $actuales = [];
-        foreach ($areas as $a) {
-            if($a->isHistorico())
-            {
-                $historicos[] = $a;
-            }
-            else
-            {
-                $actuales[] = $a;
-            }
-        }
-
-
-
         return view('superadmin.home',array(
-                'areas'=>$actuales,
-                // 'counts'=>$counts,
                 'efectivos'=>$e,
-                'detalles'=>$detalles,
-                'historicos'=>$historicos,
-        ));
-
-
-
+                'indicadores'=>$indicadores,
+                'selected'=>$selected,
+            ));
     }
 
     //
@@ -239,6 +218,7 @@ class superAdminController extends Controller
             $historico->ingreso_laboral = $individual->ingreso_laboral;
             $historico->ingreso_no_laboral = $individual->ingreso_no_laboral;
             $historico->comentario = $individual->comentario;
+            $historico->super = $individual->super;//no guradaba el cambio pajero
             $historico->user_id = Auth::user()->id;
             $historico->save();
         //  $individual = new individual();

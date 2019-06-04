@@ -19,6 +19,6 @@ class historico extends Model
     }
 
     public function who(){
-        return $this->belongsTo('App\Users','user_id');
+        return $this->belongsTo('App\User','user_id');
     }
 }

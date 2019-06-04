@@ -21,7 +21,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($efectivos as $item)
-                                @if($item->area->status == $flag && !($item->listo) && !($item->isHistorico()))
+                                @if($item->area->status == $flag && !($item->listo) )
                                 <tr id={{"encuesta-".$item->id}}
 
                                 @if($item->estado())
@@ -72,13 +72,13 @@
                                            @endif
                                     </td>
                                       @if($item->fueSuper())
-                                    <td>
-                                    <a name="" id="" class="btn btn-primary btn-sm btn-success" href="{{route('historico',['id'=>$item->id])}}" role="button">Super</a>
-                                    </td>
-                                        @elseif($item->hasCambios())
-                                    <td>
-                                        <a name="" id="" class="btn btn-primary btn-sm btn-primary" href="{{route('historico',['id'=>$item->id])}}" role="button">Tiene Cambios</a>
-                                    </td>
+                                            <td>
+                                            <a name="" id="" class="btn btn-primary btn-sm btn-success" href="{{route('historico',['id'=>$item->id])}}" role="button">Super</a>
+                                            </td>
+                                                @elseif($item->hasCambios())
+                                            <td>
+                                                <a name="" id="" class="btn btn-primary btn-sm btn-primary" href="{{route('historico',['id'=>$item->id])}}" role="button">Tiene Cambios</a>
+                                            </td>
                                     @else
                                     <td>
 

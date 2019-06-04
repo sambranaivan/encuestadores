@@ -57,6 +57,7 @@
                                             Super-Super
                                         @else
                                             Corregido por Supervisor
+                                            {{$item->who->name}}
                                         @endif
                                     </td>
 

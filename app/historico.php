@@ -17,4 +17,8 @@ class historico extends Model
             return false;
         }
     }
+
+    public function who(){
+        return $this->belongsTo('App\Users','user_id');
+    }
 }

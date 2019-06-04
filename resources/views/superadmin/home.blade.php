@@ -72,6 +72,7 @@ function mostrando(t)
                         <li class="nav-item"><a class="nav-link" id="coord-tab" data-toggle="tab" href="#coord" role="tab" aria-controls="coord" aria-selected="false">En Coordinacion</a></li>
                         <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">En supervisión</a></li>
                         <li class="nav-item"><a class="nav-link" id="listo-tab" data-toggle="tab" href="#listo" role="tab" aria-controls="listo" aria-selected="false">Listo para Carga</a></li>
+
                         {{-- <li class="nav-item"><a class="nav-link" id="histo-tab" data-toggle="tab" href="#histo" role="tab" aria-controls="histo" aria-selected="false">Cargado en INDEC</a></li> --}}
                     </ul>
                     <div class="tab-content" id="myTabContent">

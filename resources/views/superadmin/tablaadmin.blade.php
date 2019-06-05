@@ -83,7 +83,7 @@
                                                   <a name="" id="" class="btn btn-primary btn-sm btn-primary" href="{{route('historico',['id'=>$item->id])}}" role="button">Tiene Cambios</a>
                                               @endif
                                             </td>
-                                    @else
+                                         @else
                                     <td>
 
                                     </td>

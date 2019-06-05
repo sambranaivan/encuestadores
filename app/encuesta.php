@@ -195,6 +195,17 @@ class encuesta extends Model
         return false;
     }
 
+    public function modificado3(){
+        foreach ($this->componentes as $i)
+        {
+            if($i->modificado3())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function ingreso_individual()
     {
         $individual = $this->getMonts() / $this->getPonds();

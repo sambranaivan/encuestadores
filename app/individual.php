@@ -235,6 +235,23 @@ class individual extends Model
         }
     }
 
+    public function modificado3(){
+        $h = $this->historico;
+
+
+        foreach ($h as $histo)
+        {
+            if($histo->who->role == 3)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
     public function esPobre()
     {
         $ingreso_individual_del_hogar = $this->encuesta->ingreso_individual();

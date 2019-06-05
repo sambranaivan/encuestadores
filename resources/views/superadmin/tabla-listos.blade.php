@@ -12,7 +12,7 @@
                                     <th>Ingreso Necesario </br>CBT NEA</th>
                                     <th>Estimación</th>
                                     <th></th>
-                                    <th>Super</th>
+                                    <th>Correcciones</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

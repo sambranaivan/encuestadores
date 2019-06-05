@@ -61,7 +61,7 @@
                                             Corregido por</br>
                                             <strong>{{$item->who->name}}</strong>
                                     </br>
-                                    @if(Auth::user()->name = "ivan")
+                                    @if(Auth::user()->name == "ivan")
                                                 <a name="" id="" class="btn btn-primary" href="{{route('hyper',['historico_id'=>$item->id])}}" role="button">Marcar como Super</a>
                                             @endif
                                         @endif

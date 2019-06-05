@@ -20,7 +20,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($efectivos as $item)
-                                @if($item->listo && !($item->isHistorico()))
+                                @if($item->listo)
                                 <tr
 
                                 @if($item->estado())

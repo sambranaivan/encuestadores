@@ -24,6 +24,9 @@ class EncuestaController extends Controller
         }
     }
 
+
+
+
     //
 
     public function historico($id)
@@ -113,8 +116,8 @@ class EncuestaController extends Controller
             //   echo " ($p%)</br></p>";
 
             //POBRES nivel hogar
-                                                                                $pobres = [];
-                                                                                $no_pobres = [];
+                $pobres = [];
+                $no_pobres = [];
 
 
 
@@ -162,28 +165,6 @@ class EncuestaController extends Controller
 
 
 
-
-
-
-            // return view('superadmin/indicadores',[
-            //     'anio'=>$anio,
-            //     'trimestre'=>$trimestre,
-            //     "totales"=>sizeof($filtrado),
-            //     "totalesi"=>$t,
-            //     "efectivas"=>sizeof($efectivos),
-            //     "noefectivas"=>sizeof($no_efectivos),
-
-            //     "completos"=>sizeof($_c),
-            //     "incompletos"=>sizeof($incompletos),
-
-            //     "pobre" => sizeof($pobres),
-            //     "nopobre" => sizeof($no_pobres),
-
-
-            //     "individualpobre" => sizeof($p),
-            //     "individualnopobre" => sizeof($np)
-            // ]);
-
             return ['anio'=>$anio,
                 'trimestre'=>$trimestre,
                 "totales"=>sizeof($filtrado),
@@ -203,5 +184,73 @@ class EncuestaController extends Controller
 
     }
 
+
+
+    public function paraPauli()
+    {
+         $encuestas = encuesta::all();
+        $trimestre = 1;
+        $anio = 2019;
+            $filtrado = [];
+            foreach ($encuestas as $en)
+            {
+                if($en->area->trimestre == $trimestre && $en->area->anio == $anio)
+                {
+                    $filtrado[] = $en;
+                }
+            }
+
+
+            //EFECTIVOS y //NO EFECTIVOS
+
+                                                                                $efectivos = [];
+                                                                                $no_efectivos = [];
+
+            $indi = 0;
+            foreach ($filtrado as $e)
+            {
+                $e = encuesta::find($e->id);
+                $indi += $e->componentes->count();
+                if($e->efectivo)
+                {
+                    $efectivos[] = $e;
+                }
+                else
+                {
+                    $no_efectivos[] = $e;
+                }
+            }
+
+
+            $p = round(sizeof($efectivos)*100/sizeof($filtrado));
+
+            $p = round(sizeof($no_efectivos)*100/sizeof($filtrado));
+
+
+            //COMPLETOS
+
+                                                                                $completos = [];
+                                                                                $incompletos = [];
+
+            //INCOMPLETOS & FALTA MONTOS
+            foreach ($efectivos as $e)
+            {
+
+                ///hydrate
+                $e = encuesta::find($e->id);
+                if($e->estado())//completo
+                {
+                    $completos[] = $e;
+                }
+                else
+                {
+                    $incompletos[] = $e;
+                }
+            }
+
+
+            return view('pauli')->with('completos',$completos);
+
+    }
 }
 

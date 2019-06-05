@@ -119,3 +119,5 @@ route::get('ajax/encuesta/listo/{id}','EncuestaController@listo');
 route::get('ajax/encuesta/listo/','EncuestaController@listo')->name('ajaxListo');;
 
 route::get('hyper/{id}','individualController@hyper')->name('hyper');
+
+route::get('pauli','EncuestaController@parapauli');

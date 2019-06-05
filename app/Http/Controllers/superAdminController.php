@@ -69,10 +69,22 @@ class superAdminController extends Controller
         $supers = historico::whereNotNull("super")->get()->count();
 
 
-        $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
+        // $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
+        $enviar = [];
+        foreach ($areas as $a)
+        {
+            foreach ($a->encuestas as $e)
+            {
+                if($e->efectivo == 1)
+                {
+                    $enviar[] = $e;
+                }
+            }
+        }
+
         $count_areas = $areas->count();
         return view('superadmin.home',array(
-                'efectivos'=>$e,
+                'efectivos'=>$enviar,
                 'indicadores'=>$indicadores,
                 'selected'=>$selected,
                 'supers'=>$supers

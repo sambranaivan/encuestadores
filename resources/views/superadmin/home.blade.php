@@ -90,11 +90,6 @@ function mostrando(t)
 
                           @include('superadmin.tabla-listos',['efectivos'=>$efectivos])
                     </div>
-
-                    {{-- <div class="tab-pane fade" id="histo" role="tabpanel" aria-labelledby="profile-tab">
-
-                        @include('superadmin.tabla-historico',['efectivos'=>$efectivos])
-                    </div> --}}
                     <div class="tab-pane fade" id="entregado" role="tabpanel" aria-labelledby="profile-tab">
                         {{-- Entregado --}}
                          @include('superadmin.tablaadmin',['efectivos'=>$efectivos,'flag'=>'entregado'])

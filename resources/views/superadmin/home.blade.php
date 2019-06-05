@@ -63,6 +63,7 @@ function mostrando(t)
                         </div>
                            @include('superadmin.tablaIndicadores',['info'=>$indicadores])
                     <h3>Detalle de Hogares</h3>
+                    <label for="">Cantidad de Super: {{$supers}}</label>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#finalizado" role="tab" aria-controls="home" aria-selected="true">Finalizado</a></li>

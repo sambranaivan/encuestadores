@@ -66,6 +66,8 @@ class superAdminController extends Controller
 
         $indicadores = app('App\Http\Controllers\EncuestaController')->getTrimestre($anio,$t);
 
+        $supers = historico::whereNotNull("super")->get()->count();
+
 
         $e = encuesta::where('efectivo',1)->get()->sortByDesc('area_id');
         $count_areas = $areas->count();
@@ -73,6 +75,7 @@ class superAdminController extends Controller
                 'efectivos'=>$e,
                 'indicadores'=>$indicadores,
                 'selected'=>$selected,
+                'supers'=>$supers
             ));
     }
 

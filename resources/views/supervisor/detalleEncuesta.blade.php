@@ -50,8 +50,8 @@
                                 <th>Edad</th>
                                 <th>Sexo</th>
                                 <th>Condición Laboral</th>
-                                <th>Ingreso no Laboral</th>
                                 <th>Ingreso Laboral</th>
+                                <th>Ingreso no Laboral</th>
                                 <th></th>
                             </tr>
                         </thead>

@@ -18,7 +18,7 @@ class CoordinadorController extends Controller
         ->orWhere('status','finalizado')
         ->orWhere('status','en supervision')->get()->sortByDesc('id');//solo las enviadas
 
-        return view('coordinador.areas')->with('areas',$areas);
+        return view('coordinador.home')->with('areas',$areas);
 
     }
 

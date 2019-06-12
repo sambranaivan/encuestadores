@@ -12,9 +12,7 @@
                                     <th>Estado</th>
                                       <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
                                     <th></th>
-                                    {{-- <th></th> --}}
                                     <th></th>
-
                                 </tr>
                         @foreach ($areas as $item)
                         @if($item->anio == $anio && $item->trimestre == $trimestre)

@@ -224,6 +224,21 @@ class individual extends Model
         return false;
     }
 
+    public function cambiosNoSuper(){
+         $h = $this->historico;
+         $r = [];///array vacio
+
+        foreach ($h as $histo)
+        {
+            if(!$histo->esSuper()){
+                $r[] = $histo;
+            }
+        }
+
+        return $r;
+
+    }
+
     public function hasCambios(){
         if($this->historico->count())
         {

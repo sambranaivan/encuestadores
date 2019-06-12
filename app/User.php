@@ -43,8 +43,50 @@ class User extends Authenticatable
     }
 
 
+
     public function isEncuestador(){
         return ($this->role == 0);
     }
+
+
+    public function getIndividuales()
+    {
+        ///obtengo todas las encuestas
+        $c = 0;
+        foreach ($this->areas as $area)
+        {
+            foreach($area->encuestas as $encuesta)
+            {
+                $c += $encuesta->componentes->count();
+            }
+        }
+        return $c;
+
+
+        //devuelvo collecion
+
+    }
+
+    public function getCorrecciones()
+    {
+        ///obtengo todas las encuestas
+        $c = 0;
+        foreach ($this->areas as $area)
+        {
+            foreach($area->encuestas as $encuesta)
+            {
+                foreach ($encuesta->componentes as $individual)
+                {
+                    ///de cada encuensta obtengo los historicos de cambios
+                    $c += sizeof($individual->cambiosNoSuper());
+                }
+            }
+        }
+        return $c;
+        //devuelvo collecion
+
+    }
+
+
 
 }

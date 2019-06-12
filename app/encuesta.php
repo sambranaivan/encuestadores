@@ -174,10 +174,7 @@ class encuesta extends Model
         }
         return false;
     }
-
-
     //
-
     public function cambios()
     {
         return $this->hasMany('App\historico_e');
@@ -211,32 +208,7 @@ class encuesta extends Model
         $individual = $this->getMonts() / $this->getPonds();
         return $individual;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //
 
 
 

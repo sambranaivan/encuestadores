@@ -293,4 +293,7 @@ class encuestadorController extends Controller
         return view('encuestador.detalleEncuesta',array('encuesta'=>$e));
     }
 
+
+
+
 }

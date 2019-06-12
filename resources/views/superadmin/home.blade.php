@@ -39,8 +39,18 @@ function mostrando(t)
                 @else
                 <div class="card text-left">
                     <div class="card-header">
-                        <h4 class="card-title">Panel de Administración</h4>
+                        <div class="row">
 
+                            <div class="col-md-6">
+                                <h4 class="card-title">Panel de Administración</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <a name="" id="" class="btn btn-primary" href="{{route('indicadores')}}" role="button">Ver Indicadores por Trimestres</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a name="" id="" class="btn btn-primary" href="{{route('indicadoresEncuestador')}}" role="button">Ver Indicadores por Encuestador</a>
+                            </div>
+                        </div>
                     </div>
 
                   <div class="card-body">
@@ -50,16 +60,13 @@ function mostrando(t)
                                 Mostrando
                             </div>
                             <div class="col-md-4">
+                                <select name="trimestr" id="mostrando" class="form-control" onchange="mostrando(this)">
+                                    <option value="1" @if($selected == 1 ) selected @endif>2° Trimestre Año 2019</option>
+                                    <option value="2" @if($selected == 2 ) selected @endif>1° Trimestre Año 2019</option>
+                                    <option value="3" @if($selected == 3 ) selected @endif>4° Trimestre Año 2018</option>
+                                </select>
+                            </div>
 
-                        <select name="trimestr" id="mostrando" class="form-control" onchange="mostrando(this)">
-                            <option value="1" @if($selected == 1 ) selected @endif>2° Trimestre Año 2019</option>
-                            <option value="2" @if($selected == 2 ) selected @endif>1° Trimestre Año 2019</option>
-                            <option value="3" @if($selected == 3 ) selected @endif>4° Trimestre Año 2018</option>
-                        </select>
-                            </div>
-                            <div class="col-md-2">
-                                <a name="" id="" class="btn btn-primary" href="{{route('indicadores')}}" role="button">Ver Indicadores por Trimestre</a>
-                            </div>
                         </div>
                            @include('superadmin.tablaIndicadores',['info'=>$indicadores])
                     <h3>Detalle de Hogares</h3>

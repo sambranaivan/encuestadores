@@ -283,4 +283,8 @@ class individual extends Model
         }
     }
 
+    // indificar tipos de error
+
+
+
 }

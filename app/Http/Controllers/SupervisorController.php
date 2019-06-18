@@ -16,11 +16,8 @@ class SupervisorController extends Controller
 {
     //
     public function listadoAreas(){
-        // $areas = area::where('status','!=','cargando')->where('status','!=','rechazado')->where('status','!=','finalizado')->where('anio',2019)->get()->sortBy('trimestre',false);
-        // $finalizados = area::where('status','=','finalizado')->where('anio',2019)->get()->sortBy('trimestre',false);
-        // return view('supervisor.home')->with('areas',$areas)->with('finalizados',$finalizados);
-        $areas = area::where('supervisor_id',Auth::user()->id)->get()->sortByDesc('id');
-        return view('supervisor.areas')->with('areas',$areas);
+          $areas = area::where('supervisor_id',Auth::user()->id)->get()->sortByDesc('id');
+        return view('supervisor.home')->with('areas',$areas);
     }
 
     public function verArea($id){

@@ -9,11 +9,11 @@
                     <th>Trimestre/Año</th>
                     <th>Listado</th>
                     <th>Vivienda/Hogar</th>
-                    <th></th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                z
+
                 @foreach ($individuales as $index=>$item)
                 {{-- {!$i+1} --}}
 
@@ -26,6 +26,11 @@
                     <a class="btn btn-primary"  href="{{route('historicoIndividual',['id'=>$item->id])}}">
                             Ver Correcciones <span class="badge badge-dark">{{sizeof($item->cambiosNoSuper())}}</span>
                     </a>
+                </td>
+                <td>
+                    <strong>{{$item->errorType()}}</strong>
+                </br>
+                    <label class="text-muted">{{$item->getCorrector()}}</label>
                 </td>
                 </tr>
 

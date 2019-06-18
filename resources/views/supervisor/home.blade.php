@@ -13,24 +13,59 @@
                         </div>
                     </div>
                 </div>
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Supervisar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Finalizadas</a>
-                                </li>
+                                @if ($areas->count())
+                    <table class="table table-striped table-sm text-center" >
+                                <tr class="bg-dark text-white">
+                                    {{-- <th>°</th> --}}
+                                    <th>Area</th>
+                                    <th>Año</th>
+                                    <th>Trimestre</th>
+                                    <th>Semana</th>
+                                    <th>Participación n°</th>
+                                    <th>Estado</th>
+                                    <th>Encuestas Cargadas </br>(Efectivas/No Efectivas)</th>
+                                    <th>Acciones</th>
 
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        @include('supervisor.areas',['areas'=>$areas])
-                                    </div>
+                                </tr>
+                        @foreach ($areas as $item)
 
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        @include('supervisor.areas',['areas'=>$finalizados])
-                                    </div>
-                                </div>
+                                <tr>
+                                    {{-- <td>{{$item->id}}</td> --}}
+                                    <td>{{$item->area}}</td>
+                                    <td>{{$item->anio}}</td>
+                                    <td>{{$item->trimestre}}</td>
+                                    <td>{{$item->semana}}</td>
+                                    <td>{{$item->visita}}</td>
+                                    <td>{{$item->status}}</td>
+                                    <th>{{$item->encuestas->count()}}</th>
+                                    {{-- ({{$item->getEfectiva()}}/{{$item->getNoEfectiva()}})</th> --}}
+
+                                            <td>
+                                                <div class="btn-group">
+
+                                                    @if($item->status == 'en supervision')
+
+                                                <a name="" id="" class="btn btn-primary btn-sm " href="{{route('supervisarArea',['id'=>$item->id])}}" role="button">Supervisar</a>
+                                                 <a name="" id="" class="btn btn-success btn-sm " href="{{route('finalizarArea',['id'=>$item->id])}}" role="button">Finalizar Supervision</a>
+
+
+
+                                                    @endif
+
+                                                {{-- <form method="POST" action="{{route('entregarArea')}}">
+                                                        @csrf
+                                                        <input type="hidden" name="area_id" value="{{$item->id}}">
+                                                        <button type="submit" class="btn btn-success btn-sm">Entregar</br> Área</button>
+                                                    </form> --}}
+                                                </div>
+                                            </td>
+                                </tr>
+
+                        @endforeach
+                    </table>
+                    @else
+                         No Hay Areas Cargadas
+                    @endif
 
 
             </div>

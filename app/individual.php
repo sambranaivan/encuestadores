@@ -285,7 +285,85 @@ class individual extends Model
 
     // indificar tipos de cambios
 
-    public function errorType(){
+    public function errorType()
+    {
+        ///obtengo mi ultimo cambio
+        if($this->historico->count() == 0)
+        {
+            return 'sin cambios';
+        }
+
+
+        $h = $this->historico[0];
+        //
+
+        /**
+         * Reglas de comparacion
+         */
+
+        // cambios en ingreso laboral
+        if($h->ingreso_laboral != $this->ingreso_laboral)
+        {
+            // si era -9 y ahora es un monto x
+            if( ($h->ingreso_laboral < 0 || is_null($h->ingreso_laboral)) && $this->ingreso_laboral > 0)
+            {
+                return "(Territorio) Recuperacion de Ingreso Laboral";
+            }
+            elseif ($h->ingreso_laboral > 0 && ($h->ingreso_laboral != $this->ingreso_laboral))
+            {
+                return "(S/P) Correccion de Ingreso Laboral";
+            }
+        }
+        // Cambions ne ingresos no Laborales
+        if($h->ingreso_no_laboral != $this->ingreso_no_laboral)
+        {
+            // si era -9 y ahora es un monto x
+            if(($h->ingreso_no_laboral < 0 || is_null($h->ingreso_no_laboral) ) && $this->ingreso_no_laboral > 0)
+            {
+                return "(Territorio) Recuperacion de Ingreso no Laboral";
+            }
+            elseif ($h->ingreso_no_laboral > 0 && ($h->ingreso_no_laboral != $this->ingreso_no_laboral))
+            {
+                return "(S/P) Correccion de Ingreso Laboral";
+            }
+        }
+        // Cambio de sexo
+        if($h->sexo != $this->sexo)
+        {
+            return "(S/P) Correccion de Sexo";
+        }
+        // Cambio en Edad
+        if($h->edad != $this->edad)
+        {
+            return "(S/P) Correccion de Edad";
+        }
+
+        //sin cambios
+        if($h->edad == $this->edad &&
+            $h->sexo == $this->sexo &&
+            $h->ingreso_no_laboral == $this->ingreso_no_laboral &&
+            $h->ingreso_laboral == $this->ingreso_laboral)
+        {
+            return 'sin cambios';
+        }
+
+
+    }
+
+
+    /**
+     * Quien Corrigio la encuesta?
+     */
+    public function getCorrector()
+    {
+        if($this->historico->count() > 0)
+        {
+            return $this->historico[0]->who->name;
+        }
+        else
+        {
+            return 'Error - Sin Supervisor?';
+        }
 
     }
 

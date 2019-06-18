@@ -283,7 +283,14 @@ class individual extends Model
         }
     }
 
-    // indificar tipos de error
+    // indificar tipos de cambios
+
+    public function errorType(){
+
+    }
+
+
+
 
 
 

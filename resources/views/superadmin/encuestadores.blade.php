@@ -130,29 +130,23 @@
 
 <div class="container">
 
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="t2_2019-tab" data-toggle="tab" href="#t2_2019" role="tab" aria-controls="t2_2019" aria-selected="true">2° Trimestre 2019</a></li>
+                        <li class="nav-item"><a class="nav-link" id="t1_2019-tab" data-toggle="tab" href="#t1_2019" role="tab" aria-controls="t1_2019" aria-selected="false">1° Trimestre 2019</a></li>
+                        <li class="nav-item"><a class="nav-link" id="t4_2018-tab" data-toggle="tab" href="#t4_2018" role="tab" aria-controls="t4_2018" aria-selected="false">4° Trimestre 2018</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="t2_2019" role="tabpanel" aria-labelledby="dos-tab">
+                                @include('superadmin._encuestadorxtrimestre',['encuestadores'=>$encuestadores,'a'=>2019,'t'=>2])
+                            </div>
+                            <div class="tab-pane fade show " id="t1_2019" role="tabpanel" aria-labelledby="uno-tab">
+                                @include('superadmin._encuestadorxtrimestre',['encuestadores'=>$encuestadores,'a'=>2019,'t'=>1])
+                            </div>
+                            <div class="tab-pane fade show " id="t4_2018" role="tabpanel" aria-labelledby="cuatro-tab">
+                                @include('superadmin._encuestadorxtrimestre',['encuestadores'=>$encuestadores,'a'=>2018,'t'=>4])
+                            </div>
+        </div>
 
-    <table class="table" id="indextable">
-        <thead>
-            <tr>
-                <th><a href="javascript:SortTable(0,'T');">Encuestador</a></th>
-                {{-- <th><a href="javascript:SortTable(0,'T');">Encuestador</a></th> --}}
-                <th><a href="javascript:SortTable(1,'N');">Correcciones (no Super)</a></th>
-                <th>Totales (Individuales)<th>
-                <th>%<th>
-                    <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($encuestadores as $e)
-               <tr>
-               <td>{{$e->name}}</td>
-               <td>{{$e->getCorrecciones()}}</td>
-               <td>{{$e->getIndividuales()}}</td>
-               <td>{{round($e->getCorrecciones()/$e->getIndividuales() * 100 ,2)}}%</td>
-               <td><a name="" id="" class="btn btn-primary btn-disabled" href="{{route('correccionesEncuestador',['encuestador_id'=>$e->id])}}" role="button">Ver</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
 </div>
 @endsection

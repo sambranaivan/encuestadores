@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- {!$i = 0} --}}
+                z
                 @foreach ($individuales as $index=>$item)
                 {{-- {!$i+1} --}}
 

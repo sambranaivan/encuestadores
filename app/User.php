@@ -67,6 +67,34 @@ class User extends Authenticatable
 
     }
 
+     public function getIndividualesT($a,$t)
+    {
+        ///obtengo todas las encuestas
+        $c = 0;
+        foreach ($this->areas as $area)
+        {
+              if($area->anio == $a && $area->trimestre == $t)
+              {
+
+                  foreach($area->encuestas as $encuesta)
+                  {
+                      $c += $encuesta->componentes->count();
+                    }
+                }
+        }
+
+        // handshake para salve la division por 0
+        if($c)
+        {
+            return $c;
+        }
+        else
+        {
+            return 1;
+        }
+
+    }
+
     public function getCorrecciones()
     {
         ///obtengo todas las encuestas
@@ -86,6 +114,30 @@ class User extends Authenticatable
         //devuelvo collecion
 
     }
+
+      public function getCorreccionesT($a,$t)
+    {
+        ///obtengo todas las encuestas
+        $c = 0;
+        foreach ($this->areas as $area)
+        {
+            if($area->anio == $a && $area->trimestre == $t)
+            {
+                foreach($area->encuestas as $encuesta)
+                    {
+                        foreach ($encuesta->componentes as $individual)
+                        {
+                            ///de cada encuensta obtengo los historicos de cambios
+                            $c += sizeof($individual->cambiosNoSuper());
+                        }
+                    }
+            }
+        }
+        return $c;
+        //devuelvo collecion
+
+    }
+
 
 
 

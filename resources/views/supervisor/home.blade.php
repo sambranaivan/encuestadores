@@ -52,6 +52,7 @@
 
                                                     @endif
 
+
                                                 {{-- <form method="POST" action="{{route('entregarArea')}}">
                                                         @csrf
                                                         <input type="hidden" name="area_id" value="{{$item->id}}">
